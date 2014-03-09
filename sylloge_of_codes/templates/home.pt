@@ -1,55 +1,9 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="sylloge_of_codes">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-    <link rel="shortcut icon" href="${request.static_url('sylloge_of_codes:static/pyramid-16x16.png')}"/>
-
-    <title>Jumbotron Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="${request.static_url('sylloge_of_codes:static/css/bootstrap.min.css')}" rel="stylesheet"/>
-
-    <!-- Custom styles for this template -->
-    <link href="${request.static_url('sylloge_of_codes:static/css/jumbotron.css')}" rel="stylesheet"/>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="${request.static_url('sylloge_of_codes:static/js/html5shiv.js')}"></script>
-      <script src="${request.static_url('sylloge_of_codes:static/js/respond.min.js')}"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Codec</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control"/>
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control"/>
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    metal:use-macro="base">
+    <tal:block metal:fill-slot="content">
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -60,22 +14,27 @@
         <p>Aenean accumsan et metus a feugiat. Sed varius eleifend tellus at egestas. Nulla eu aliquet risus. Morbi ullamcorper diam a lorem adipiscing dapibus. Vivamus venenatis diam eget aliquam mattis. Duis odio lectus, ultricies nec nisl eu, volutpat facilisis elit. Nullam imperdiet dictum nibh, ut eleifend est interdum nec. Aliquam eu eros purus. Donec sem sem, ullamcorper vitae eros ac, pellentesque ultricies elit. In hac habitasse platea dictumst. Proin malesuada nec dui consectetur tempor. Vivamus odio massa, lacinia eu erat ut, auctor adipiscing libero. In hac habitasse platea dictumst.</p>
         <p>Aenean laoreet feugiat turpis eget ultrices. Curabitur viverra aliquam neque, quis interdum augue tempor bibendum. Integer tempus non sapien ut fringilla. Suspendisse potenti. Nullam ultricies pharetra accumsan. Donec aliquam ligula orci, quis aliquam urna bibendum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed in quam sed risus sodales sollicitudin. Vivamus scelerisque lacinia eros, et vulputate magna laoreet sed. Praesent ultricies elit eu accumsan ornare. Aliquam consequat viverra magna, vitae egestas lorem dictum ut.</p>
         <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam egestas justo felis, et condimentum diam malesuada sit amet. Donec luctus imperdiet dignissim. Sed auctor, leo ac gravida placerat, odio nibh vestibulum nisl, ut dictum tortor dui ut nulla. Curabitur scelerisque quam erat, sed faucibus mi suscipit eu. Vestibulum tortor lacus, varius et orci a, cursus tempor risus. Curabitur nisl tortor, elementum sagittis felis eu, pharetra accumsan purus.</p>
-        <form role="form">
+        <form role="form" action="/code_submit" method="POST">
             <div class="form-group">
-                <label for="codec">Codec response</label>
-                <textarea placeholder="Codec response" id ="codec" class="form-control" rows="6"></textarea>
+                <label i18n:translate="code_label" for="code">Code</label>
+                <textarea placeholder="Code" name="code" id ="code" class="form-control" rows="6" cols="10"></textarea>
             </div>
             <div class="form-group">
-                <label for="pseudonym">Pseudonym</label>
-                <input placeholder="Pseudonym" id="pseudonym" />
+                <label i18n:translate="comments_label" for="codec">(Optional) Comments about this idea?</label>
+                <textarea placeholder="Comments" name="comments" id ="comments" class="form-control" rows="6" cols="10"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label i18n:translate="pseudonym_label" for="pseudonym">Pseudonym</label>
+                <input placeholder="Pseudonym" name="pseudonym" id="pseudonym" />
             </div>
             <div class="form-group">
-                <label for="mediaFile">Optional Media File</label>
-                <input type="file" id="mediaFile" />
+                <label i18n:translate="media_file_path_label" for="mediaFilePath">Optional Media File</label>
+                <input type="file" name="mediaFilePath" id="mediaFilePath" />
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button i18n:translate="submit_code_button_label" name="form.submitted" type="submit" class="btn btn-lg btn-primary">Submit</button>
         </form>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+        <!--<p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>-->
       </div>
     </div>
 
@@ -98,19 +57,6 @@
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
-
-      <hr/>
-
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="${request.static_url('sylloge_of_codes:static/js/jquery.min.js')}"></script>
-    <script src="${request.static_url('sylloge_of_codes:static/js/bootstrap.min.js')}"></script>
-  </body>
+    </div>
+    </tal:block>
 </html>
