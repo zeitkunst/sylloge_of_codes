@@ -15,6 +15,7 @@ def main(global_config, **settings):
     Base.metadata.bind = engine
     config = Configurator(settings=settings,
             root_factory="sylloge_of_codes.models.RootFactory")
+    config.include('pyramid_chameleon')
     config.add_translation_dirs("sylloge_of_codes:locale")
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
