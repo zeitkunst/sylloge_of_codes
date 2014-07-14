@@ -18,6 +18,7 @@ requires = [
     'Babel',
     'lingua',
     'pytz',
+    'sqlalchemy-migrate',
     ]
 
 setup(name='sylloge_of_codes',

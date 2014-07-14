@@ -3,3 +3,4 @@ data/sessions
 sstore
 sylloge_of_codes.egg-info
 sylloge_of_codes.sqlite
+*.pyc

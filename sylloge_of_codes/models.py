@@ -12,7 +12,6 @@ from sqlalchemy import (
     Integer,
     Text,
     DateTime,
-    Boolean,
     ForeignKey
     )
 
@@ -53,13 +52,14 @@ class Media(Base):
 
 class Sylloge(Base):
     """The SQLAlchemy declarative model class for a Codec object"""
+    # REMEMBER! sqlite doesn't have boolean type, using it here will only cause problems with migration scripts later...
     __tablename__ = "sylloge"
     id = Column(Integer, primary_key=True)
     code = Column(Text(convert_unicode=True))
     comments = Column(Text(convert_unicode=True))
     pseudonym = Column(Text(convert_unicode=True))
     code_date = Column(DateTime)
-    enabled = Column(Boolean)
+    enabled = Column(Integer) # really, boolean
     media_id = Column(Integer, ForeignKey("media.id"))
 
     media = relationship(Media, backref=backref("sylloge", order_by=id))

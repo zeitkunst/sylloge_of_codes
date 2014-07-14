@@ -26,5 +26,7 @@ def main(global_config, **settings):
     config.add_route('sylloge_code', '/sylloge/{code_id}')
     config.add_route('admin', '/admin')
     config.add_route('admin_curate', '/admin_curate')
+    config.add_route('print_test', '/print_test')
+    config.add_route('print', '/print')
     config.scan()
     return config.make_wsgi_app()

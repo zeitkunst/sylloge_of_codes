@@ -1,3 +1,5 @@
+import random
+
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound, HTTPForbidden
 from pyramid.response import Response
 from pyramid.url import route_url
@@ -11,6 +13,7 @@ from .models import (
     Media,
     )
 
+from wkhtmltopdf import wkhtmltopdf
 
 @view_config(route_name='home', renderer='templates/home.pt')
 def home(request):
@@ -47,6 +50,25 @@ def credits(request):
 @view_config(route_name="about", renderer="templates/about.pt")
 def about(request):
     return {"title": "Sylloge of Codes Credits"}
+
+@view_config(route_name="print_test", renderer="templates/print_test.pt")
+def print_test(request):
+    session = DBSession()
+
+    rand = random.randrange(0, session.query(Sylloge).count())
+    row = session.query(Sylloge)[rand]
+
+    code = row.code
+    code_date = row.code_date
+    pseudonym = row.pseudonym
+
+    return {"title": "Sylloge of Codes Credits", "code_item": "Submitted on %s by %s: %s" % (pseudonym, code_date, code)}
+
+@view_config(route_name="print", renderer="templates/print.pt")
+def print_page(request):
+    wkhtmltopdf(url="http://localhost:6543/print_test", output_file = "/Users/nknouf/Dropbox/projects/sylloge_of_codes/web/sylloge_of_codes/sylloge_of_codes/sylloge_of_codes/static/pdf/print_test.pdf")
+
+    return {"title": "Sylloge of Codes Print", "pdf_url": "/static/pdf/print_test.pdf"}
 
 @view_config(route_name="sylloge", renderer="templates/sylloge.pt")
 def sylloge(request):
