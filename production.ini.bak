@@ -1,31 +1,31 @@
-# App configuration
-[app:sylloge_of_codes]
+###
+# app configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/environment.html
+###
+
+[app:main]
 use = egg:sylloge_of_codes
-reload_templates = false
-debug_authorization = false
-debug_notfound = false
-default_locale_name = en
-pyramid.includes = 
+
+pyramid.reload_templates = false
+pyramid.debug_authorization = false
+pyramid.debug_notfound = false
+pyramid.debug_routematch = false
+pyramid.default_locale_name = en
+pyramid.includes =
     pyramid_tm
+
 sqlalchemy.url = sqlite:///%(here)s/sylloge_of_codes.sqlite
 
-
-# Pipeline configuration
-[filter:paste_prefix]
-use = egg:PasteDeploy#prefix
-
-[pipeline:main]
-pipeline = 
-    paste_prefix
-    sylloge_of_codes
-
-# Server configuration
 [server:main]
 use = egg:waitress#main
-host = 127.0.0.1
-port = %(http_port)s
+host = 0.0.0.0
+port = 6543
 
-# Logging configuration
+###
+# logging configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/logging.html
+###
+
 [loggers]
 keys = root, sylloge_of_codes, sqlalchemy
 
