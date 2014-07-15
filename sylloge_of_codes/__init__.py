@@ -24,6 +24,7 @@ def main(global_config, **settings):
     config.add_route('credits', '/credits')
     config.add_route('sylloge', '/sylloge')
     config.add_route('sylloge_code', '/sylloge/{code_id}')
+    config.add_route('render_pdf', '/render_pdf/{code_id}')
     config.add_route('admin', '/admin')
     config.add_route('admin_curate', '/admin_curate')
     config.add_route('print_test', '/print_test')

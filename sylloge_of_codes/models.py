@@ -59,7 +59,9 @@ class Sylloge(Base):
     comments = Column(Text(convert_unicode=True))
     pseudonym = Column(Text(convert_unicode=True))
     code_date = Column(DateTime)
-    enabled = Column(Integer) # really, boolean
+    enabled = Column(Integer, default = 0) # really, boolean
+    pdf_processed = Column(Integer, default = 0) # really, boolean
+    pdf_path = Column(Text)
     media_id = Column(Integer, ForeignKey("media.id"))
 
     media = relationship(Media, backref=backref("sylloge", order_by=id))

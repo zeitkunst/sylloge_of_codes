@@ -34,4 +34,5 @@ def main(argv=sys.argv):
     Base.metadata.create_all(engine)
     with transaction.manager:
         code = Sylloge(code='This is a test', pseudonym="zeitkunst")
+        code.enabled = 1
         DBSession.add(code)

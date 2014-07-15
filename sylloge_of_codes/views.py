@@ -1,11 +1,13 @@
 import random
 
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound, HTTPForbidden
+from pyramid.exceptions import NotFound
 from pyramid.response import Response
 from pyramid.url import route_url
-from pyramid.view import view_config
+from pyramid.view import view_config, notfound_view_config
 
 from sqlalchemy.exc import DBAPIError
+from sqlalchemy.orm.exc import NoResultFound
 
 from .models import (
     DBSession,
@@ -14,6 +16,11 @@ from .models import (
     )
 
 from wkhtmltopdf import wkhtmltopdf
+
+@notfound_view_config(renderer = "templates/notfound.pt")
+def notfound_view(request):
+    request.response.status = 404
+    return dict(title = "404 Not Found", notfound = request.exception.args[0])
 
 @view_config(route_name='home', renderer='templates/home.pt')
 def home(request):
@@ -55,7 +62,7 @@ def about(request):
 def print_test(request):
     session = DBSession()
 
-    rand = random.randrange(0, session.query(Sylloge).count())
+    rand = random.randrange(0, session.query(Sylloge).filter(Sylloge.pdf_processed == 1).count())
     row = session.query(Sylloge)[rand]
 
     code = row.code
@@ -66,13 +73,34 @@ def print_test(request):
 
 @view_config(route_name="print", renderer="templates/print.pt")
 def print_page(request):
-    wkhtmltopdf(url="http://localhost:6543/print_test", output_file = "/Users/nknouf/Dropbox/projects/sylloge_of_codes/web/sylloge_of_codes/sylloge_of_codes/sylloge_of_codes/static/pdf/print_test.pdf")
+    #wkhtmltopdf(url="http://localhost:6543/print_test", output_file = "/Users/nknouf/Dropbox/projects/sylloge_of_codes/web/sylloge_of_codes/sylloge_of_codes/sylloge_of_codes/static/pdf/print_test.pdf")
+    session = DBSession()
+    rand = random.randrange(0, session.query(Sylloge).filter(Sylloge.pdf_processed == 1).count())
+    row = session.query(Sylloge)[rand]
 
-    return {"title": "Sylloge of Codes Print", "pdf_url": "/static/pdf/print_test.pdf"}
+
+    return {"title": "Sylloge of Codes Print", "pdf_url": row.pdf_path}
 
 @view_config(route_name="sylloge", renderer="templates/sylloge.pt")
 def sylloge(request):
     return {}
+
+@view_config(route_name="render_pdf", renderer="templates/render_pdf.pt")
+def render_pdf(request):
+    session = DBSession()
+    matchdict = request.matchdict
+    
+    try:
+        code_result = session.query(Sylloge).filter(Sylloge.id == matchdict["code_id"]).one()
+    except NoResultFound:
+        raise HTTPNotFound("No code found.")
+
+    code = code_result.code
+    date = code_result.code_date
+    pseudonym = code_result.pseudonym
+    output = "Posted by %s on %s: %s" % (pseudonym, date, code)
+
+    return {"title": "Sylloge of Codes Selection", "output": output}
 
 @view_config(route_name="sylloge_code", renderer="templates/sylloge_code.pt")
 def sylloge_code(request):
@@ -86,6 +114,7 @@ def admin(request):
 def admin_curate(request):
     return {}
 
+#@view_config(renderer = "templates/notfound.pt", context = NotFound)
 
 #def my_view(request):
 #    try:

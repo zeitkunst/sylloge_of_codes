@@ -1,6 +1,6 @@
 from sqlalchemy import *
 from migrate import *
-
+from sqlalchemy.exc import OperationalError
 
 def upgrade(migrate_engine):
     # pdf_processed is really a boolean, but sqlite doesn't have booleans, and if I use the sqlalchemy Boolean type, it causes oh-so-many-problems with the downgrade scripts (see https://code.google.com/p/sqlalchemy-migrate/issues/detail?id=143)
@@ -10,8 +10,17 @@ def upgrade(migrate_engine):
     sylloge = Table('sylloge', meta, autoload = True)
     pdf_path = Column('pdf_path', Text)
     pdf_processed = Column('pdf_processed', Integer)
-    pdf_path.create(sylloge)
-    pdf_processed.create(sylloge)
+
+    try:
+        pdf_path.create(sylloge)
+    except OperationalError, e:
+        if ("duplicate" in e): print "Column already exists"
+
+    try:
+        pdf_processed.create(sylloge)
+    except OperationalError, e:
+        if ("duplicate" in e): print "Column already exists"
+
 
 
 def downgrade(migrate_engine):
