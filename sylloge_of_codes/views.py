@@ -17,6 +17,8 @@ from .models import (
 
 from wkhtmltopdf import wkhtmltopdf
 
+import textile
+
 @notfound_view_config(renderer = "templates/notfound.pt")
 def notfound_view(request):
     request.response.status = 404
@@ -98,9 +100,8 @@ def render_pdf(request):
     code = code_result.code
     date = code_result.code_date
     pseudonym = code_result.pseudonym
-    output = "Posted by %s on %s: %s" % (pseudonym, date, code)
 
-    return {"title": "Sylloge of Codes Selection", "output": output}
+    return {"title": "Sylloge of Codes Selection", "code": textile.textile(code), "date": date, "pseudonym": pseudonym}
 
 @view_config(route_name="sylloge_code", renderer="templates/sylloge_code.pt")
 def sylloge_code(request):

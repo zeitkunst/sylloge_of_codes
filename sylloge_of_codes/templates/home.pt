@@ -28,10 +28,12 @@
                 <label i18n:translate="pseudonym_label" for="pseudonym">Pseudonym</label>
                 <input placeholder="Pseudonym" name="pseudonym" id="pseudonym" />
             </div>
+            <!--
             <div class="form-group">
                 <label i18n:translate="media_file_path_label" for="mediaFilePath">Optional Media File</label>
                 <input type="file" name="mediaFilePath" id="mediaFilePath" />
             </div>
+            -->
             <button i18n:translate="submit_code_button_label" name="form.submitted" type="submit" class="btn btn-lg btn-primary">Submit</button>
         </form>
         <!--<p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>-->

@@ -19,6 +19,7 @@ requires = [
     'lingua',
     'pytz',
     'sqlalchemy-migrate',
+    'textile',
     ]
 
 setup(name='sylloge_of_codes',

@@ -1,0 +1,77 @@
+@media print {
+
+    body {
+        color: #111;
+        background: #fff;
+        font-family: "CrimsonText", Garamond, Georgia, serif;
+    }
+
+    h1, h2, h2 {
+        page-break-after: avoid;
+    }
+
+    img {
+           max-width: 100% !important;
+    }
+
+    ul, img {
+        page-break-after: avoid;
+    }
+
+    a {
+        font-weight: bolder;
+        text-decoration: none;
+    }
+
+    /*
+    div, h1, h2, h3, img {
+        border: 1px solid black !important;
+    }
+    */
+
+    hr {
+        display: none;
+    }
+
+    footer {
+        margin-top: 0.25in;
+        padding-top: 0.25in;
+        margin-left: 1in;
+        margin-right: 1in;
+        border-top: 1px solid black !important;
+    }
+
+    a[href^=http]:after {
+        content: " <" attr(href) "> ";
+    }
+
+    .navbar {
+        display: none;
+    }
+    
+    #pDebug {
+        display: none;
+    }
+    
+    .jumbotron h1 {
+        font-weight: bold;
+        font-size: 36pt;
+        font-family: "SourceSansPro", sans-serif;
+        text-align: center;
+    }
+
+    @page {
+        size: portrait; 
+        margin: 1in;
+        orphans: 4; 
+        widows: 2;
+    }
+
+    /*
+     * From http://stackoverflow.com/questions/19948474/bootstrap-3-print-layout-and-breaks-after-each-grid-column
+     * Doesn't quite work, as it doesn't keep the width, as far as I can tell
+    [class*="col-sm-"] {
+        float: left;
+    }
+     */
+}

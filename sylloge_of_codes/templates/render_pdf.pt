@@ -6,10 +6,30 @@
     <tal:block metal:fill-slot="content">
     <div class="jumbotron">
       <div class="container">
-        <div class="code">
-            <p>${output}</p>
-        </div>
+          <h1>sylloge of codes</h1>
       </div>
+    </div>
+
+    <div class="code">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <p i18n:translate='PDFContribution'>Contributed by <span tal:replace='pseudonym' i18n:name='pseudonym'/> on <span tal:replace='date' i18n:name='date'/></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <div tal:replace="structure code">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <p i18n:translate="PDFMoreInfo">For more information about this project, please visit <a href="http://sylloge-of-codes.net">sylloge-of-codes.net</a>.</p>
+                </div>
+            </div>
+
+        </div>
     </div>
     </tal:block>
 </html>
