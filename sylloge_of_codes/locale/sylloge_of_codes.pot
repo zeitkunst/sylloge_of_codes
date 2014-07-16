@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sylloge_of_codes 1.0\n"
 "Report-Msgid-Bugs-To: nknouf@zeitkunst.org\n"
-"POT-Creation-Date: 2014-07-15 17:25-04:00\n"
+"POT-Creation-Date: 2014-07-16 00:32-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 
+#: ./sylloge_of_codes/views.py:82
+#, c-format
+msgid "Code was submitted successfully. Thanks!"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:43
+#, c-format
+msgid "Error: you must enter a code"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:46
+#, c-format
+msgid "Code"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:47
+#, c-format
+msgid "(Optional) Comments about this idea?"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:48
+#, c-format
+msgid "Pseudonym"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:52
+#, c-format
+msgid "Submit"
+msgstr ""
+
 #. Default: about
-#: ./sylloge_of_codes/templates/base.pt:74
+#: ./sylloge_of_codes/templates/base.pt:76
 msgid "aboutMenu"
 msgstr ""
 
 #. Default: credits
-#: ./sylloge_of_codes/templates/base.pt:77
+#: ./sylloge_of_codes/templates/base.pt:79
 msgid "creditsMenu"
 msgstr ""
 
 #. Default: Nicholas Knouf and the respective contributors. All content is
 #. licensed under a
-#: ./sylloge_of_codes/templates/base.pt:103
+#: ./sylloge_of_codes/templates/base.pt:105
 msgid "footerCopyright"
 msgstr ""
 
@@ -44,7 +74,7 @@ msgstr ""
 #. into seemingly secure communications. What we're left feeling is
 #. helplessness, a distinct lack of power to respond, and a dangerous level of
 #. cynicism.
-#: ./sylloge_of_codes/templates/home.pt:16
+#: ./sylloge_of_codes/templates/home.pt:30
 msgid "firstP"
 msgstr ""
 
@@ -55,7 +85,7 @@ msgstr ""
 #. information. They are horrible at dealing with the poetic, with sarcasm,
 #. with hidden messages, pidgin, and nuanced meanings. They cannot handle the
 #. unquantifiable.
-#: ./sylloge_of_codes/templates/home.pt:19
+#: ./sylloge_of_codes/templates/home.pt:33
 msgid "secondP"
 msgstr ""
 
@@ -65,28 +95,13 @@ msgstr ""
 #. collection, a reference to the dark ages where travellers would record
 #. ancient Roman and Greek inscriptions. We too will create a new sylloge of
 #. alternative forms of communication.
-#: ./sylloge_of_codes/templates/home.pt:22
+#: ./sylloge_of_codes/templates/home.pt:36
 msgid "thirdP"
 msgstr ""
 
-#. Default: Code
-#: ./sylloge_of_codes/templates/home.pt:44
-msgid "code_label"
-msgstr ""
-
-#. Default: (Optional) Comments about this idea?
-#: ./sylloge_of_codes/templates/home.pt:53
-msgid "comments_label"
-msgstr ""
-
-#. Default: Pseudonym
-#: ./sylloge_of_codes/templates/home.pt:63
-msgid "pseudonym_label"
-msgstr ""
-
-#. Default: Submit
-#: ./sylloge_of_codes/templates/home.pt:72
-msgid "submit_code_button_label"
+#. Default: The requested resource was not found for the following reason:
+#: ./sylloge_of_codes/templates/notfound.pt:12
+msgid "notFoundMessage"
 msgstr ""
 
 #. Default: Contributed by ${pseudonym} on ${date}

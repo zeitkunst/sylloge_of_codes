@@ -192,3 +192,23 @@ footer {
     margin-left: 1em;
     margin-right: 1em;
 }
+
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity 4.00s ease;
+    -moz-transition: opacity 4.00s ease;
+    -o-transition: opacity 4.00s ease;
+    transition: opacity 4.00s ease;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+.control-group {
+    margin-bottom: 1.0em;
+}
+
+div.tab-content {
+    margin-bottom: 1.0em;
+}

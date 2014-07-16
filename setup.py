@@ -21,6 +21,8 @@ requires = [
     'sqlalchemy-migrate',
     'textile',
     'deform',
+    'colander',
+    'pycrypto',
     'pyramid_beaker',
     ]
 
@@ -48,5 +50,6 @@ setup(name='sylloge_of_codes',
       main = sylloge_of_codes:main
       [console_scripts]
       initialize_sylloge_of_codes_db = sylloge_of_codes.scripts.initializedb:main
+      process_pdfs = sylloge_of_codes.scripts.process_pdfs:main
       """,
       )

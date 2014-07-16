@@ -5,6 +5,7 @@ from pyramid.exceptions import NotFound
 from pyramid.response import Response
 from pyramid.url import route_url
 from pyramid.view import view_config, notfound_view_config
+from pyramid.i18n import get_locale_name, TranslationStringFactory
 
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy.orm.exc import NoResultFound
@@ -19,9 +20,11 @@ from wkhtmltopdf import wkhtmltopdf
 
 import textile
 
-from deform import Form, ValidationFailure
+import colander
+from deform import Form, ValidationFailure, Button
+from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget
 
-from models import Code
+_ = TranslationStringFactory("sylloge_of_codes")
 
 @notfound_view_config(renderer = "templates/notfound.pt")
 def notfound_view(request):
@@ -31,12 +34,19 @@ def notfound_view(request):
 @view_config(route_name='home', renderer='templates/home.pt')
 def home(request):
     session = DBSession()
-    form = Form(Code(), buttons=('submit',))
+
+    # TODO
+    # Not sure if this is the best way of doing things, but it's the only way I can think of to pass in the locale from the request, without jumping through a lot of hoops
+    class Code(colander.Schema):
+        code = colander.SchemaNode(colander.String(), title = _("Code"), widget = TextAreaWidget(rows = 6, css_class = "form-control"), missing_msg = _("Error: you must enter a code"),)
+        comments = colander.SchemaNode(colander.String(), title = _("(Optional) Comments about this idea?"), missing = '', widget = TextAreaWidget(rows = 6, css_class = "form-control"))
+        pseudonym = colander.SchemaNode(colander.String(), title = _("Pseudonym"), widget = TextInputWidget(css_class = "form-control"))
+        _LOCALE_ = colander.SchemaNode(colander.String(), widget = HiddenWidget(), default = get_locale_name(request))
+    
+    form = Form(Code(), buttons=[Button("submit", _("Submit"), css_class = "btn btn-primary btn-lg")])
 
     if "submit" in request.POST:
-        print request
         controls = request.POST.items()
-        print controls
 
         try:
             appstruct = form.validate(controls)
@@ -61,26 +71,34 @@ def home(request):
         
         # TODO
         # setup sessions
-        #request.session.flash("Code was submitted successfully.")
+        request.session.flash(_("Code was submitted successfully. Thanks!"))
         url = request.route_url("home")
         return HTTPFound(location=url)
     else:
         return {"title": "Sylloge of Codes Homepage", "form":form.render()}
 
-@view_config(route_name="code_submit", renderer="templates/code_submit.pt")
-def code_submit(request):
+@view_config(route_name='submit', renderer='templates/submit.pt')
+def submit(request):
     session = DBSession()
-    form = Form(Code(), buttons=('submit',), action="/code_submit")
-    #if "form.submitted" in request.params:
+
+    # TODO
+    # Not sure if this is the best way of doing things, but it's the only way I can think of to pass in the locale from the request, without jumping through a lot of hoops
+    class Code(colander.Schema):
+        code = colander.SchemaNode(colander.String(), title = _("Code"), widget = TextAreaWidget(rows = 6, css_class = "form-control"), missing_msg = _("Error: you must enter a code"),)
+        comments = colander.SchemaNode(colander.String(), title = _("(Optional) Comments about this idea?"), missing = '', widget = TextAreaWidget(rows = 6, css_class = "form-control"))
+        pseudonym = colander.SchemaNode(colander.String(), title = _("Pseudonym"), widget = TextInputWidget(css_class = "form-control"))
+        _LOCALE_ = colander.SchemaNode(colander.String(), widget = HiddenWidget(), default = get_locale_name(request))
+    
+    form = Form(Code(), buttons=[Button("submit", _("Submit"), css_class = "btn btn-primary btn-lg")])
+
     if "submit" in request.POST:
-        print request
         controls = request.POST.items()
-        print controls
 
         try:
             appstruct = form.validate(controls)
         except ValidationFailure, e:
-            print e.render()
+            return {"title": "Sylloge of Codes Homepage", "form": e.render()}
+
         # TODO
         # Add in some sort of form validation, as in the Fluid Nexus website
         code = request.params["code"]
@@ -96,8 +114,14 @@ def code_submit(request):
 
         code = Sylloge(code = code, comments = comments, pseudonym = pseudonym)
         session.add(code)
-
-        return {"title": "Thanks!"}
+        
+        # TODO
+        # setup sessions
+        request.session.flash(_("Code was submitted successfully. Thanks!"))
+        url = request.route_url("home")
+        return HTTPFound(location=url)
+    else:
+        return {"title": "Sylloge of Codes Homepage", "form":form.render()}
 
 @view_config(route_name="credits", renderer="templates/credits.pt")
 def credits(request):

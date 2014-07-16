@@ -1,4 +1,5 @@
 from pyramid.config import Configurator
+from pyramid_beaker import session_factory_from_settings
 from sqlalchemy import engine_from_config
 
 from .models import (
@@ -10,17 +11,19 @@ from .models import (
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
+    session_factory = session_factory_from_settings(settings)
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
     config = Configurator(settings=settings,
             root_factory="sylloge_of_codes.models.RootFactory")
+    config.set_session_factory(session_factory)
     config.include('pyramid_chameleon')
     config.include('pyramid_beaker')
     config.add_translation_dirs("sylloge_of_codes:locale")
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
-    config.add_route('code_submit', '/code_submit')
+    config.add_route('submit', '/submit')
     config.add_route('about', '/about')
     config.add_route('credits', '/credits')
     config.add_route('sylloge', '/sylloge')
