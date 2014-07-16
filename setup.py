@@ -20,6 +20,8 @@ requires = [
     'pytz',
     'sqlalchemy-migrate',
     'textile',
+    'deform',
+    'pyramid_beaker',
     ]
 
 setup(name='sylloge_of_codes',
@@ -35,10 +37,6 @@ setup(name='sylloge_of_codes',
       author='',
       author_email='',
       url='',
-      message_extractors = {".":[
-          ("**.py", "lingua_python", None),
-          ("**.pt", "lingua_xml", None),
-      ]},
       keywords='web wsgi bfg pylons pyramid',
       packages=find_packages(),
       include_package_data=True,

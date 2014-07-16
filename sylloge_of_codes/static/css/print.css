@@ -33,6 +33,10 @@
         display: none;
     }
 
+    /*
+     * TODO
+     * Consider page-break-after, -before
+     */
     footer {
         margin-top: 0.25in;
         padding-top: 0.25in;
@@ -53,7 +57,7 @@
         display: none;
     }
     
-    .jumbotron h1 {
+    h1 {
         font-weight: bold;
         font-size: 36pt;
         font-family: "SourceSansPro", sans-serif;

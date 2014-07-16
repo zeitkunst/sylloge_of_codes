@@ -28,8 +28,24 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
+import colander
+from deform.widget import TextAreaWidget
+
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
+
+class Code(colander.MappingSchema):
+    def codePresent(node, value):
+        if (value == ''):
+            msg = _("Error: you must enter a code")
+            raise colander.Invalid(node, msg)
+
+    code = colander.SchemaNode(colander.String(), widget = TextAreaWidget(rows = 10, cols = 50, mask_placeholder="Code"), validator = colander.All(codePresent))
+    comments = colander.SchemaNode(colander.String(), widget = TextAreaWidget())
+    pseudonym = colander.SchemaNode(colander.String())
+    
+class CodeSchema(colander.MappingSchema):
+    code = Code()
 
 class RootFactory(object):
     __acl__ = [ (Allow, Everyone, "view"),

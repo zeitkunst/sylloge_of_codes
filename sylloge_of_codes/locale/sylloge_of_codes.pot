@@ -1,45 +1,101 @@
-# Translations template for sylloge_of_codes.
-# Copyright (C) 2014 ORGANIZATION
+# 
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) 2014 Nicholas Knouf
 # This file is distributed under the same license as the sylloge_of_codes
-# project.
+# package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
-#
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: sylloge_of_codes 0.0\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-09 14:03-0400\n"
+"Project-Id-Version: sylloge_of_codes 1.0\n"
+"Report-Msgid-Bugs-To: nknouf@zeitkunst.org\n"
+"POT-Creation-Date: 2014-07-15 17:25-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Language: \n"
+
+#. Default: about
+#: ./sylloge_of_codes/templates/base.pt:74
+msgid "aboutMenu"
+msgstr ""
+
+#. Default: credits
+#: ./sylloge_of_codes/templates/base.pt:77
+msgid "creditsMenu"
+msgstr ""
+
+#. Default: Nicholas Knouf and the respective contributors. All content is
+#. licensed under a
+#: ./sylloge_of_codes/templates/base.pt:103
+msgid "footerCopyright"
+msgstr ""
+
+#. Default: This is a time when electronic communications are surveilled the
+#. world over. Little seems to escape the computer programs and human analysts
+#. that pour over our electronic data as it traverses national boundaries
+#. through undersea cables or the wireless ether. Sent in the clear, our data
+#. is understandable by anyone with a bit of technical knowledge. So we're
+#. asked to encrypt it, to obfuscate it in some way. But these same programs
+#. and analysts have made these encryption techniques weak, opening backdoors
+#. into seemingly secure communications. What we're left feeling is
+#. helplessness, a distinct lack of power to respond, and a dangerous level of
+#. cynicism.
+#: ./sylloge_of_codes/templates/home.pt:16
+msgid "firstP"
+msgstr ""
+
+#. Default: So if we can't trust that our messages pass from one person to
+#. another without being surveilled, no matter what computational steps we
+#. take, what can we do? We can think more poetically. Computers are rather
+#. silly machines, only able to "understand" the most basic means of
+#. information. They are horrible at dealing with the poetic, with sarcasm,
+#. with hidden messages, pidgin, and nuanced meanings. They cannot handle the
+#. unquantifiable.
+#: ./sylloge_of_codes/templates/home.pt:19
+msgid "secondP"
+msgstr ""
+
+#. Default: This implies that we should be developing new, more poetic forms of
+#. communication that are resistant to analysis by computers. So consider this
+#. an invitation, an invitation to create a sylloge of codes. A sylloge is a
+#. collection, a reference to the dark ages where travellers would record
+#. ancient Roman and Greek inscriptions. We too will create a new sylloge of
+#. alternative forms of communication.
+#: ./sylloge_of_codes/templates/home.pt:22
+msgid "thirdP"
+msgstr ""
 
 #. Default: Code
-#: sylloge_of_codes/templates/home.pt:19
+#: ./sylloge_of_codes/templates/home.pt:44
 msgid "code_label"
 msgstr ""
 
 #. Default: (Optional) Comments about this idea?
-#: sylloge_of_codes/templates/home.pt:23
+#: ./sylloge_of_codes/templates/home.pt:53
 msgid "comments_label"
 msgstr ""
 
 #. Default: Pseudonym
-#: sylloge_of_codes/templates/home.pt:28
+#: ./sylloge_of_codes/templates/home.pt:63
 msgid "pseudonym_label"
 msgstr ""
 
-#. Default: Optional Media File
-#: sylloge_of_codes/templates/home.pt:32
-msgid "media_file_path_label"
-msgstr ""
-
 #. Default: Submit
-#: sylloge_of_codes/templates/home.pt:35
+#: ./sylloge_of_codes/templates/home.pt:72
 msgid "submit_code_button_label"
 msgstr ""
 
+#. Default: Contributed by ${pseudonym} on ${date}
+#: ./sylloge_of_codes/templates/render_pdf.pt:20
+msgid "PDFContribution"
+msgstr ""
+
+#. Default: For more information about this project, please visit <dynamic
+#. element>.
+#: ./sylloge_of_codes/templates/render_pdf.pt:44
+msgid "PDFMoreInfo"
+msgstr ""

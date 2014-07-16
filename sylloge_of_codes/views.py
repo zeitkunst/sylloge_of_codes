@@ -19,6 +19,10 @@ from wkhtmltopdf import wkhtmltopdf
 
 import textile
 
+from deform import Form, ValidationFailure
+
+from models import Code
+
 @notfound_view_config(renderer = "templates/notfound.pt")
 def notfound_view(request):
     request.response.status = 404
@@ -26,12 +30,57 @@ def notfound_view(request):
 
 @view_config(route_name='home', renderer='templates/home.pt')
 def home(request):
-    return {"title": "Sylloge of Codes Homepage", "project": "Sylloge of Codes"}
+    session = DBSession()
+    form = Form(Code(), buttons=('submit',))
+
+    if "submit" in request.POST:
+        print request
+        controls = request.POST.items()
+        print controls
+
+        try:
+            appstruct = form.validate(controls)
+        except ValidationFailure, e:
+            return {"title": "Sylloge of Codes Homepage", "form": e.render()}
+
+        # TODO
+        # Add in some sort of form validation, as in the Fluid Nexus website
+        code = request.params["code"]
+        comments = request.params["comments"]
+        pseudonym = request.params["pseudonym"]
+        try:
+            mediaFilePath = request.params["mediaFilePath"]
+
+            # TODO
+            # Add in code for uploading media, if a path exists
+        except KeyError:
+            mediaFilePath = None
+
+        code = Sylloge(code = code, comments = comments, pseudonym = pseudonym)
+        session.add(code)
+        
+        # TODO
+        # setup sessions
+        #request.session.flash("Code was submitted successfully.")
+        url = request.route_url("home")
+        return HTTPFound(location=url)
+    else:
+        return {"title": "Sylloge of Codes Homepage", "form":form.render()}
 
 @view_config(route_name="code_submit", renderer="templates/code_submit.pt")
 def code_submit(request):
     session = DBSession()
-    if "form.submitted" in request.params:
+    form = Form(Code(), buttons=('submit',), action="/code_submit")
+    #if "form.submitted" in request.params:
+    if "submit" in request.POST:
+        print request
+        controls = request.POST.items()
+        print controls
+
+        try:
+            appstruct = form.validate(controls)
+        except ValidationFailure, e:
+            print e.render()
         # TODO
         # Add in some sort of form validation, as in the Fluid Nexus website
         code = request.params["code"]
@@ -49,8 +98,6 @@ def code_submit(request):
         session.add(code)
 
         return {"title": "Thanks!"}
-
-    return HTTPFound(location = route_url("home", request))
 
 @view_config(route_name="credits", renderer="templates/credits.pt")
 def credits(request):
