@@ -4,8 +4,9 @@ from pyramid.httpexceptions import HTTPFound, HTTPNotFound, HTTPForbidden
 from pyramid.exceptions import NotFound
 from pyramid.response import Response
 from pyramid.url import route_url
-from pyramid.view import view_config, notfound_view_config
+from pyramid.view import view_config, notfound_view_config, forbidden_view_config
 from pyramid.i18n import get_locale_name, TranslationStringFactory
+from pyramid.security import remember, forget, authenticated_userid
 
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy.orm.exc import NoResultFound
@@ -24,6 +25,8 @@ import colander
 from deform import Form, ValidationFailure, Button
 from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget
 
+from models import Curator
+
 _ = TranslationStringFactory("sylloge_of_codes")
 
 @notfound_view_config(renderer = "templates/notfound.pt")
@@ -33,49 +36,7 @@ def notfound_view(request):
 
 @view_config(route_name='home', renderer='templates/home.pt')
 def home(request):
-    session = DBSession()
-
-    # TODO
-    # Not sure if this is the best way of doing things, but it's the only way I can think of to pass in the locale from the request, without jumping through a lot of hoops
-    class Code(colander.Schema):
-        code = colander.SchemaNode(colander.String(), title = _("Code"), widget = TextAreaWidget(rows = 6, css_class = "form-control"), missing_msg = _("Error: you must enter a code"),)
-        comments = colander.SchemaNode(colander.String(), title = _("(Optional) Comments about this idea?"), missing = '', widget = TextAreaWidget(rows = 6, css_class = "form-control"))
-        pseudonym = colander.SchemaNode(colander.String(), title = _("Pseudonym"), widget = TextInputWidget(css_class = "form-control"))
-        _LOCALE_ = colander.SchemaNode(colander.String(), widget = HiddenWidget(), default = get_locale_name(request))
-    
-    form = Form(Code(), buttons=[Button("submit", _("Submit"), css_class = "btn btn-primary btn-lg")])
-
-    if "submit" in request.POST:
-        controls = request.POST.items()
-
-        try:
-            appstruct = form.validate(controls)
-        except ValidationFailure, e:
-            return {"title": "Sylloge of Codes Homepage", "form": e.render()}
-
-        # TODO
-        # Add in some sort of form validation, as in the Fluid Nexus website
-        code = request.params["code"]
-        comments = request.params["comments"]
-        pseudonym = request.params["pseudonym"]
-        try:
-            mediaFilePath = request.params["mediaFilePath"]
-
-            # TODO
-            # Add in code for uploading media, if a path exists
-        except KeyError:
-            mediaFilePath = None
-
-        code = Sylloge(code = code, comments = comments, pseudonym = pseudonym)
-        session.add(code)
-        
-        # TODO
-        # setup sessions
-        request.session.flash(_("Code was submitted successfully. Thanks!"))
-        url = request.route_url("home")
-        return HTTPFound(location=url)
-    else:
-        return {"title": "Sylloge of Codes Homepage", "form":form.render()}
+    return {"title": "Sylloge of Codes Homepage"}
 
 @view_config(route_name='submit', renderer='templates/submit.pt')
 def submit(request):
@@ -117,8 +78,8 @@ def submit(request):
         
         # TODO
         # setup sessions
-        request.session.flash(_("Code was submitted successfully. Thanks!"))
-        url = request.route_url("home")
+        request.session.flash(_("Code was submitted successfully."))
+        url = request.route_url("submitted")
         return HTTPFound(location=url)
     else:
         return {"title": "Sylloge of Codes Homepage", "form":form.render()}
@@ -144,15 +105,14 @@ def print_test(request):
 
     return {"title": "Sylloge of Codes Credits", "code_item": "Submitted on %s by %s: %s" % (pseudonym, code_date, code)}
 
-@view_config(route_name="print", renderer="templates/print.pt")
+@view_config(route_name="submitted", renderer="templates/submitted.pt")
 def print_page(request):
-    #wkhtmltopdf(url="http://localhost:6543/print_test", output_file = "/Users/nknouf/Dropbox/projects/sylloge_of_codes/web/sylloge_of_codes/sylloge_of_codes/sylloge_of_codes/static/pdf/print_test.pdf")
     session = DBSession()
     rand = random.randrange(0, session.query(Sylloge).filter(Sylloge.pdf_processed == 1).count())
     row = session.query(Sylloge)[rand]
 
 
-    return {"title": "Sylloge of Codes Print", "pdf_url": row.pdf_path}
+    return {"title": "Sylloge of Codes Thanks", "pdf_url": row.pdf_path}
 
 @view_config(route_name="sylloge", renderer="templates/sylloge.pt")
 def sylloge(request):
@@ -178,13 +138,60 @@ def render_pdf(request):
 def sylloge_code(request):
     return {}
 
-@view_config(route_name="admin", renderer="templates/admin.pt")
-def admin(request):
-    return {}
+# Authorized sections
+@view_config(route_name = "login", renderer = "templates/login.pt")
+@forbidden_view_config(renderer = "templates/login.pt")
+def login(request):
+    login_url = route_url("login", request)
+    logged_in = authenticated_userid(request)
 
-@view_config(route_name="admin_curate", renderer="templates/admin_curate.pt")
-def admin_curate(request):
-    return {}
+    if (logged_in):
+        request.session.flash(_("You are already logged in."))
+        return HTTPFound(location = route_url("home", request))
+
+    referrer = request.url
+    if referrer == login_url:
+        referrer = "/" # never use the Login form itself as came_from
+
+    came_from = request.params.get("came_from", referrer)
+    login = ""
+    password = ""
+    
+    if "submitted" in request.params:
+        session = DBSession()
+        login = request.params["login"]
+        password = request.params["password"]
+
+        if (Curator.checkPassword(login, password)):
+            request.session["username"] = login
+            headers = remember(request, Curator.getID(login))
+            request.session.flash(_("You are now logged in."))
+            return HTTPFound(location = came_from, headers = headers)
+
+        request.session.flash(_("Failed login"))
+
+    return dict(
+            url = request.application_url + "/login",
+            came_from = came_from,
+            login = login,
+            password = password,
+            title = _("Sylloge of Codes Login"),
+            )
+
+@view_config(route_name = "logout")
+def logout(request):
+    headers = forget(request)
+    request.session.flash(_("You have been logged out."))
+    return HTTPFound(location = route_url("home", request), headers = headers)
+
+@view_config(route_name = "curate", renderer = "templates/curate.pt", permission = "admin")
+def curate(request):
+    return {"title":_("Sylloge of Codes Curate")}
+
+@view_config(route_name = "admin", renderer = "templates/admin.pt", permission = "admin")
+def admin(request):
+    return {"title":_("Sylloge of Codes Admin")}
+
 
 #@view_config(renderer = "templates/notfound.pt", context = NotFound)
 

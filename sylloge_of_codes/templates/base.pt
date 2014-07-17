@@ -70,12 +70,19 @@
     </tal:block>
 
       
-      <!-- FOOTER -->  
-      <hr/>
-
-      <footer>
-          <p>&copy; 2014, <span i18n:translate="footerCopyright">Nicholas Knouf and the respective contributors. All content is licensed under a </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
-      </footer>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <!-- FOOTER -->  
+                    <hr/>
+                    <footer>
+                        <p>&copy; 2014, <span i18n:translate="footerCopyright">Nicholas Knouf and the respective contributors. All content is licensed under a </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

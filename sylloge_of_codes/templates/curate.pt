@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="sylloge_of_codes" 
+    metal:use-macro="base">
+    <tal:block metal:fill-slot="content">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="content">
+        <div class="container">
+            <h1 i18n:translate="syllogeCurate">curate sylloge of codes</h1>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 alert alert-success fade" id="flash_messages" tal:condition="request.session.peek_flash()">
+                    <p class="flash_message" tal:repeat="message request.session.pop_flash()">${message}</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <p i18n:translate="curateP1">Curate info</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </tal:block>
+</html>

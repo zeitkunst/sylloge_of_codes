@@ -24,6 +24,7 @@ requires = [
     'colander',
     'pycrypto',
     'pyramid_beaker',
+    'bcrypt',
     ]
 
 setup(name='sylloge_of_codes',

@@ -182,8 +182,15 @@ body {
 }
 
 .content h1 {
-    font-weight: bold;
+    font-weight: 900;
     font-size: 36pt;
+    font-family: "SourceSansPro", sans-serif;
+    text-align: center;
+}
+
+.content h2 {
+    font-weight: bold;
+    font-size: 28pt;
     font-family: "SourceSansPro", sans-serif;
     text-align: center;
 }

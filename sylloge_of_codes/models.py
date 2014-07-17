@@ -11,7 +11,9 @@ from sqlalchemy import (
     Index,
     Integer,
     Text,
+    Unicode,
     DateTime,
+    Float,
     ForeignKey
     )
 
@@ -28,6 +30,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
+import bcrypt
 
 from pyramid.i18n import TranslationStringFactory
 _ = TranslationStringFactory("sylloge_of_codes")
@@ -38,7 +41,7 @@ Base = declarative_base()
     
 class RootFactory(object):
     __acl__ = [ (Allow, Everyone, "view"),
-            (Allow, "group:curators", "edit")]
+            (Allow, "group:admin", "admin")]
 
     def __init__(self, request):
         pass
@@ -83,5 +86,77 @@ class Sylloge(Base):
     def addMedia(self):
         pass
 
+class Curator(Base):
+    __label__ = "Curator"
+    __plural__ = "Curators"
+    __tablename__ = "curator"
 
+    id = Column(Integer, primary_key = True)
+    username = Column(Unicode, nullable = False)
+    password = Column(Unicode, nullable = False)
+    given_name = Column(Unicode)
+    surname = Column(Unicode)
+    created = Column(Float)
+    email = Column(Unicode, default = u"")
+
+    def __repr__(self):
+        return "<Curator '%s'>" % self.username
+
+    @classmethod
+    def getByUsername(cls, username):
+        return DBSession.query(cls).filter(cls.username == username).first()
+
+    @classmethod
+    def getByID(cls, user_id):
+        return DBSession.query(cls).filter(cls.id == user_id).first()
+
+    @classmethod
+    def checkPassword(cls, username, password):
+        user = cls.getByUsername(username)
+        if not user:
+            return False
+
+        hashed_password = DBSession.query(Curator.password).filter(Curator.username == username).one()[0]
+
+        if bcrypt.hashpw(password.encode("utf-8"), hashed_password.encode("utf-8")) == hashed_password:
+            return True
+        else:
+            return False
+
+    @classmethod
+    def getID(cls, username):
+        return DBSession.query(cls.id).filter(cls.username == username).one()[0]
 #Index('sylloge_index', Sylloge.code, unique=True, mysql_length=255)
+
+class GroupInfo(Base):
+    __label__ = "GroupInfo"
+    __plural__ = "GroupInfos"
+    __tablename__ = "group_info"
+
+    id = Column(Integer, primary_key = True)
+    group_name = Column(Unicode, nullable = False)
+    description = Column(Unicode, nullable = False)
+
+    def __repr__(self):
+        return "<GroupInfo '%s'>" % self.group_name
+
+    def __init__(self, group_name = "", description = ""):
+        self.group_name = group_name
+        self.description = description
+
+class Group(Base):
+    __label__ = "Group"
+    __plural__ = "Groups"
+    __tablename__ = "groups"
+    
+    id = Column(Integer, primary_key = True)
+    curator_id = Column(Integer, ForeignKey('curator.id'), nullable = False)
+    group_info_id = Column(Integer, ForeignKey('group_info.id'), nullable = False)
+
+    curator = relationship(Curator, backref=backref('groups', order_by=id))
+    group_info = relationship(GroupInfo, backref=backref('groups', order_by=id))
+    
+    def __repr__(self):
+        return "<Group '%d'>" % self.id
+
+
