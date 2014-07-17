@@ -22,6 +22,7 @@ requires = [
     'textile',
     'deform',
     'colander',
+    'ColanderAlchemy',
     'pycrypto',
     'pyramid_beaker',
     'bcrypt',

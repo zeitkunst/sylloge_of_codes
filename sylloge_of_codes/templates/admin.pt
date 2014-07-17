@@ -19,6 +19,7 @@
                 <div class="col-md-offset-2 col-md-8">
                     <ul>
                         <li><a href="/curate" i18n:translate="">Curate</a></li>
+                        <li><a href="/logout" i18n:translate="">Logout</a></li>
                     </ul>
                 </div>
             </div>

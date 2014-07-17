@@ -6,6 +6,8 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from sylloge_of_codes.security import groupfinder
 
+from sqlalchemy import event
+from colanderalchemy import setup_schema
 from .models import (
     DBSession,
     Base,

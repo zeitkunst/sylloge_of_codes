@@ -22,12 +22,23 @@ from wkhtmltopdf import wkhtmltopdf
 import textile
 
 import colander
+from colanderalchemy import SQLAlchemySchemaNode
 from deform import Form, ValidationFailure, Button
-from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget
+from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget, CheckboxChoiceWidget
+
+import json
 
 from models import Curator
 
 _ = TranslationStringFactory("sylloge_of_codes")
+
+class SyllogeSQLAlchemySchemaNode(SQLAlchemySchemaNode):
+    def get_schema_from_column(self, prop, override):
+        print dir(prop)
+        print prop.key
+        print "PROP: " + str(prop)
+        if (prop.key == "enabled"):
+            return colander.SchemaNode(colander.Boolean(), name = "Enabled", missing = False)
 
 @notfound_view_config(renderer = "templates/notfound.pt")
 def notfound_view(request):
@@ -186,35 +197,64 @@ def logout(request):
 
 @view_config(route_name = "curate", renderer = "templates/curate.pt", permission = "admin")
 def curate(request):
-    return {"title":_("Sylloge of Codes Curate")}
+    session = DBSession()
+
+    if "submit" in request.params:
+        # First, enable selected code IDs
+        selectedCodeIDs = request.params.getall("selectedCodes")
+        selectedCodeIDs = [int(i) for i in selectedCodeIDs]
+        codes = session.query(Sylloge).filter(Sylloge.id.in_(selectedCodeIDs)).all()
+        for code in codes:
+            code.enabled = 1
+            session.add(code)
+            session.flush()
+
+        # Next, disable deselected code IDs
+        hidden = json.loads(request.params.get("enabled"))
+        print "::::HIDDEN: " + str(set(hidden))
+        print "::::SELECTED: " + str(set(selectedCodeIDs))
+        print "::::DIFFERENCE: " + str(set(hidden) - set(selectedCodeIDs))
+        toDeselect = set(hidden) - set(selectedCodeIDs)
+        print toDeselect
+        codes = session.query(Sylloge).filter(Sylloge.id.in_(toDeselect)).all()
+        for code in codes:
+            code.enabled = 0
+            session.add(code)
+            session.flush()
+
+        
+        return HTTPFound(location = route_url("curate", request))
+
+    results = session.query(Sylloge.id, Sylloge.enabled, Sylloge.code_date, Sylloge.code, Sylloge.pseudonym, Sylloge.comments)
+    enabled= session.query(Sylloge.id).filter(Sylloge.enabled == 1).all()
+    enabled = [item.id for item in enabled]
+    
+    return {"title":_("Sylloge of Codes Curate"), "results": results, "hidden": json.dumps(enabled)}
 
 @view_config(route_name = "admin", renderer = "templates/admin.pt", permission = "admin")
 def admin(request):
     return {"title":_("Sylloge of Codes Admin")}
 
-
-#@view_config(renderer = "templates/notfound.pt", context = NotFound)
-
-#def my_view(request):
-#    try:
-#        one = DBSession.query(MyModel).filter(MyModel.name == 'one').first()
-#    except DBAPIError:
-#        return Response(conn_err_msg, content_type='text/plain', status_int=500)
-#    return {'one': one, 'project': 'sylloge_of_codes'}
+# CRUFT
+#    options = []
+#    for result in results:
+#        output = """<p>Posted by %s on %s:</p>
+#        <p>Code: %s</p>
+#        <p>Comment: %s</p>""" % (result.pseudonym, str(result.code_date), result.code, str(result.comments))
+#        #output = "\n".join([str(result.code_date), result.pseudonym, result.code, str(result.comments)])
+#        options.append((result.id, output))
 #
-#conn_err_msg = """\
-#Pyramid is having a problem using your SQL database.  The problem
-#might be caused by one of the following things:
+#    class SchemaTest(colander.Schema):
+#        option = colander.SchemaNode(
+#                colander.Set(),
+#                widget = CheckboxChoiceWidget(values = options)
+#                )
+#    
+#    schema = SchemaTest()
+#    form = Form(schema, buttons = ('submit',))
 #
-#1.  You may need to run the "initialize_sylloge_of_codes_db" script
-#    to initialize your database tables.  Check your virtual 
-#    environment's "bin" directory for this script and try to run it.
+#    #form = SyllogeSQLAlchemySchemaNode(Sylloge, includes = ["enabled", "code_date", "code", "pseudonym", "comments"])
+#    #Form(form, buttons=("submit",)).render()
+#    
+#    #return {"title":_("Sylloge of Codes Curate"), "form": form.render()}
 #
-#2.  Your database server may not be running.  Check that the
-#    database server referred to by the "sqlalchemy.url" setting in
-#    your "development.ini" file is running.
-#
-#After you fix the problem, please restart the Pyramid application to
-#try it again.
-#"""
-

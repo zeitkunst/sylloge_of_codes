@@ -14,12 +14,14 @@ from sqlalchemy import (
     Unicode,
     DateTime,
     Float,
-    ForeignKey
+    ForeignKey,
+    event,
     )
 
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import (
+    mapper,
     scoped_session,
     sessionmaker,
     relationship,
@@ -32,11 +34,14 @@ from zope.sqlalchemy import ZopeTransactionExtension
 
 import bcrypt
 
+from colanderalchemy import setup_schema
+
 from pyramid.i18n import TranslationStringFactory
 _ = TranslationStringFactory("sylloge_of_codes")
 
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
+event.listen(mapper, "mapper_configured", setup_schema)
 
     
 class RootFactory(object):

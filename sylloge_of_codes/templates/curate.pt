@@ -18,6 +18,30 @@
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
                     <p i18n:translate="curateP1">Curate info</p>
+                    <div class="col-md-2">
+                        <h3>Enabled</h3>                        
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Code</h3>
+                    </div>
+
+                    <form action="/curate" method="POST">
+                        <p tal:repeat="result results">
+                            <div class="col-md-2">
+                                <input type="checkbox" name="selectedCodes" value="${result.id}" checked="${result.enabled and 'checked' or None}"/>
+                            </div>
+                            <div class="col-md-10">
+                                <p>Posted by ${result.pseudonym} on ${result.code_date}</p>
+                                <p>Code: ${result.code}</p>
+                            </div>
+                        </p>
+                        <input type="hidden" name="enabled" value="${hidden}" />
+                        <p>
+                            <button id="curateSubmit" name="submit" type="submit" class="btnText submit btn btn-primary btn-lg" value="submit">
+                                <span>Submit</span>
+                            </button>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
