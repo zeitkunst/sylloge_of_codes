@@ -8,6 +8,7 @@ from pyramid.view import view_config, notfound_view_config, forbidden_view_confi
 from pyramid.i18n import get_locale_name, TranslationStringFactory
 from pyramid.security import remember, forget, authenticated_userid
 
+from sqlalchemy import desc
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy.orm.exc import NoResultFound
 
@@ -225,7 +226,7 @@ def curate(request):
         
         return HTTPFound(location = route_url("curate", request))
 
-    results = session.query(Sylloge.id, Sylloge.enabled, Sylloge.code_date, Sylloge.code, Sylloge.pseudonym, Sylloge.comments)
+    results = session.query(Sylloge.id, Sylloge.enabled, Sylloge.code_date, Sylloge.code, Sylloge.pseudonym, Sylloge.comments).order_by(desc(Sylloge.code_date))
     enabled= session.query(Sylloge.id).filter(Sylloge.enabled == 1).all()
     enabled = [item.id for item in enabled]
     
