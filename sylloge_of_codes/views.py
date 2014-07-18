@@ -30,6 +30,7 @@ from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget, Checkbo
 import json
 
 from models import Curator
+from pager import Pager
 
 _ = TranslationStringFactory("sylloge_of_codes")
 
@@ -196,8 +197,24 @@ def logout(request):
     request.session.flash(_("You have been logged out."))
     return HTTPFound(location = route_url("home", request), headers = headers)
 
+@view_config(route_name = "curate_nopagenum", renderer = "templates/curate.pt", permission = "admin")
+def curate_nopagenum(request):
+    session = DBSession()
+    
+    return doCurate(request, page_num = 1)
+
+
 @view_config(route_name = "curate", renderer = "templates/curate.pt", permission = "admin")
 def curate(request):
+    matchdict = request.matchdict
+    page_num = matchdict["page_num"]
+    return doCurate(request, page_num = int(page_num))
+
+@view_config(route_name = "admin", renderer = "templates/admin.pt", permission = "admin")
+def admin(request):
+    return {"title":_("Sylloge of Codes Admin")}
+
+def doCurate(request = None, page_num = 1, limit = 10):
     session = DBSession()
 
     if "submit" in request.params:
@@ -223,18 +240,33 @@ def curate(request):
             session.add(code)
             session.flush()
 
-        
-        return HTTPFound(location = route_url("curate", request))
+        request.session.flash(_("Codes updated."))
+        return HTTPFound(location = route_url("curate", request, page_num = int(page_num)))
 
-    results = session.query(Sylloge.id, Sylloge.enabled, Sylloge.code_date, Sylloge.code, Sylloge.pseudonym, Sylloge.comments).order_by(desc(Sylloge.code_date))
-    enabled= session.query(Sylloge.id).filter(Sylloge.enabled == 1).all()
-    enabled = [item.id for item in enabled]
+
+    codes = session.query(Sylloge.id, Sylloge.enabled, Sylloge.code_date, Sylloge.code, Sylloge.pseudonym, Sylloge.comments).order_by(desc(Sylloge.code_date))
+    p = Pager(codes, page_num, limit)
+    #enabled= session.query(Sylloge.id).filter(Sylloge.enabled == 1).all()
+    #enabled = [item.id for item in p2.results]
+    #p2 = Pager(enabled, page_num, limit)
     
-    return {"title":_("Sylloge of Codes Curate"), "results": results, "hidden": json.dumps(enabled)}
+    codes = p.results
+    enabled = []
+    for item in p.results:
+        if item.enabled: enabled.append(item.id)
 
-@view_config(route_name = "admin", renderer = "templates/admin.pt", permission = "admin")
-def admin(request):
-    return {"title":_("Sylloge of Codes Admin")}
+
+    if (page_num < p.pages):
+        next_page = page_num + 1
+    else:
+        next_page = 0
+
+    if (page_num > 1):
+        previous_page = page_num - 1
+    else:
+        previous_page = 0
+
+    return dict(title = _("Sylloge of Codes Curate"), codes = codes, pages = p.pages, page_num = page_num, previous_page = previous_page, next_page = next_page, hidden = json.dumps(enabled), action = route_url("curate", request, page_num = page_num))
 
 # CRUFT
 #    options = []

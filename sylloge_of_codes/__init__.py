@@ -46,7 +46,8 @@ def main(global_config, **settings):
     # Routes that need authentication
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
-    config.add_route('curate', '/curate')
+    config.add_route('curate_nopagenum', '/curate')
+    config.add_route('curate', '/curate/{page_num}')
     config.add_route('admin', '/admin')
     config.scan()
     return config.make_wsgi_app()

@@ -18,11 +18,27 @@
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
                     <div class="login">
-                        <form action="${url}" method="post">
+                        <form action="${url}" method="post" class="deform">
+                            <fieldset class="deformFormFieldset">
                             <input type="hidden" name="came_from" value="${came_from}"/>
-                            <label for="login" i18n:translate="username">Username: </label><input type="text" name="login" value="${login}"/><br/>
-                            <label for="password" i18n:translate="password">Password: </label><input type="password" name="password" value="${password}"/><br/>
-                            <input type="submit" name="submitted" value="Log In"/>
+                            <ul>
+                                <li class="field" title>
+                                    <label title for="login" class="desc" i18n:translate="username">Username: </label>
+                                    <input type="text" name="login" value="${login}" class="form-control"/>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="field">
+                                    <label for="password" title class="desc"  i18n:translate="password">Password: </label>
+                                    <input type="password" name="password" value="${password}" class="form-control"/><br/>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="buttons">
+                                <button type="submit" name="submitted" type="submit" value="submit" value="Log In" class="btnText submit btn btn-primary btn-lg" i18n:translate="">Submit</button>
+                                </li>
+                            </ul>
+                        </fieldset>
                         </form>
                     </div>
 
