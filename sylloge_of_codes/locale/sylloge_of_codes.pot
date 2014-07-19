@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sylloge_of_codes 1.0\n"
 "Report-Msgid-Bugs-To: nknouf@zeitkunst.org\n"
-"POT-Creation-Date: 2014-07-16 00:32-04:00\n"
+"POT-Creation-Date: 2014-07-18 17:11-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,50 +18,178 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 
-#: ./sylloge_of_codes/views.py:82
+#: ./sylloge_of_codes/views.py:197
 #, c-format
-msgid "Code was submitted successfully. Thanks!"
+msgid "You have been logged out."
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:43
+#: ./sylloge_of_codes/views.py:215
 #, c-format
-msgid "Error: you must enter a code"
+msgid "Sylloge of Codes Admin"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:46
+#: ./sylloge_of_codes/views.py:94
+#, c-format
+msgid "Code was submitted successfully."
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:162
+#, c-format
+msgid "You are already logged in."
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:184
+#, c-format
+msgid "Failed login"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:191
+#, c-format
+msgid "Sylloge of Codes Login"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:243
+#, c-format
+msgid "Codes updated."
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:269
+#, c-format
+msgid "Sylloge of Codes Curate"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:61 ./sylloge_of_codes/templates/curate.pt:56
 #, c-format
 msgid "Code"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:47
+#: ./sylloge_of_codes/views.py:61
+#, c-format
+msgid "Error: you must enter a code"
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:62
 #, c-format
 msgid "(Optional) Comments about this idea?"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:48
+#: ./sylloge_of_codes/views.py:63
 #, c-format
 msgid "Pseudonym"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:52
+#: ./sylloge_of_codes/views.py:181
+#, c-format
+msgid "You are now logged in."
+msgstr ""
+
+#: ./sylloge_of_codes/views.py:66 ./sylloge_of_codes/templates/login.pt:68
 #, c-format
 msgid "Submit"
 msgstr ""
 
-#. Default: about
+#. Default: about sylloge of codes
+#: ./sylloge_of_codes/templates/about.pt:11
+msgid "syllogeAbout"
+msgstr ""
+
+#. Default: Some about here
+#: ./sylloge_of_codes/templates/about.pt:30
+msgid "aboutP1"
+msgstr ""
+
+#. Default: admin sylloge of codes
+#. Default: curate sylloge of codes
+#: ./sylloge_of_codes/templates/admin.pt:11
+#: ./sylloge_of_codes/templates/curate.pt:11
+msgid "syllogeCurate"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/admin.pt:32
+msgid "Curate"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/admin.pt:35
+msgid "Logout"
+msgstr ""
+
+#. Default: submit
 #: ./sylloge_of_codes/templates/base.pt:76
+msgid "submitMenu"
+msgstr ""
+
+#. Default: about
+#: ./sylloge_of_codes/templates/base.pt:79
 msgid "aboutMenu"
 msgstr ""
 
 #. Default: credits
-#: ./sylloge_of_codes/templates/base.pt:79
+#: ./sylloge_of_codes/templates/base.pt:82
 msgid "creditsMenu"
 msgstr ""
 
 #. Default: Nicholas Knouf and the respective contributors. All content is
 #. licensed under a
-#: ./sylloge_of_codes/templates/base.pt:105
+#: ./sylloge_of_codes/templates/base.pt:115
 msgid "footerCopyright"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/base.pt:118
+msgid "Admin"
+msgstr ""
+
+#. Default: sylloge of codes credits
+#: ./sylloge_of_codes/templates/credits.pt:11
+msgid "syllogeCredits"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/credits.pt:30
+msgid "Translations by Claudia Pederson."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/credits.pt:33
+msgid ""
+"Thanks to Daniela Rivera for patience with the extended amount of time it "
+"took to realize this project!"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/credits.pt:36
+msgid ""
+"Funding for ${sylloge_of_codes} came from a Faculty Award at Wellesley "
+"College."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/credits.pt:42
+msgid "website"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/credits.pt:44
+msgid "projection"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/credits.pt:41
+msgid ""
+"All code for the ${website} and the ${projection} is available from github."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/curate.pt:32
+msgid "Admin Home."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/curate.pt:34
+msgid "Curate Home"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/curate.pt:39
+msgid "Previous"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/curate.pt:41
+msgid "Next"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/curate.pt:49
+msgid "Enabled"
 msgstr ""
 
 #. Default: This is a time when electronic communications are surveilled the
@@ -99,6 +227,21 @@ msgstr ""
 msgid "thirdP"
 msgstr ""
 
+#. Default: submit code
+#: ./sylloge_of_codes/templates/home.pt:54
+msgid "largeSubmitLink"
+msgstr ""
+
+#. Default: Username:
+#: ./sylloge_of_codes/templates/login.pt:42
+msgid "username"
+msgstr ""
+
+#. Default: Password:
+#: ./sylloge_of_codes/templates/login.pt:55
+msgid "password"
+msgstr ""
+
 #. Default: The requested resource was not found for the following reason:
 #: ./sylloge_of_codes/templates/notfound.pt:12
 msgid "notFoundMessage"
@@ -109,8 +252,30 @@ msgstr ""
 msgid "PDFContribution"
 msgstr ""
 
-#. Default: For more information about this project, please visit <dynamic
-#. element>.
+#. Default: For more information about this project, please visit
+#. ${sylloge_website}.
 #: ./sylloge_of_codes/templates/render_pdf.pt:44
 msgid "PDFMoreInfo"
+msgstr ""
+
+#. Default: sylloge of codes
+#: ./sylloge_of_codes/templates/submitted.pt:11
+msgid "syllogeTitle"
+msgstr ""
+
+#. Default: thanks for your submission
+#: ./sylloge_of_codes/templates/submitted.pt:14
+msgid "syllogeThanks"
+msgstr ""
+
+#. Default: download a random code
+#: ./sylloge_of_codes/templates/submitted.pt:34
+msgid "pdfURL"
+msgstr ""
+
+#. Default: If you would like, you can ${download_code} submitted by another
+#. contributor. If you find the code interesting and would like to share how
+#. you used it, you can e-mail code@sylloge-of-codes.net.
+#: ./sylloge_of_codes/templates/submitted.pt:33
+msgid "submittedText"
 msgstr ""

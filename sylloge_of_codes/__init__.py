@@ -49,5 +49,6 @@ def main(global_config, **settings):
     config.add_route('curate_nopagenum', '/curate')
     config.add_route('curate', '/curate/{page_num}')
     config.add_route('admin', '/admin')
+    config.add_route('shutdown', '/admin/shutdown')
     config.scan()
     return config.make_wsgi_app()

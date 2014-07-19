@@ -18,7 +18,7 @@
             
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
-                    <p i18n:translate="submittedText">If you would like, you can <a href="${pdf_url}" i18n:translate="pdfURL">download a random code</a> submitted by another contributor. If you find the code interesting and would like to share how you used it, you can e-mail code@sylloge-of-codes.net.</p>
+                    <p i18n:translate="submittedText">If you would like, you can <a href="${pdf_url}" i18n:name="download_code" i18n:translate="pdfURL">download a random code</a> submitted by another contributor. If you find the code interesting and would like to share how you used it, you can e-mail code@sylloge-of-codes.net.</p>
                 </div>
             </div>
         </div>

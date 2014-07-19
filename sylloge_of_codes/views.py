@@ -36,9 +36,6 @@ _ = TranslationStringFactory("sylloge_of_codes")
 
 class SyllogeSQLAlchemySchemaNode(SQLAlchemySchemaNode):
     def get_schema_from_column(self, prop, override):
-        print dir(prop)
-        print prop.key
-        print "PROP: " + str(prop)
         if (prop.key == "enabled"):
             return colander.SchemaNode(colander.Boolean(), name = "Enabled", missing = False)
 
@@ -203,6 +200,12 @@ def curate_nopagenum(request):
     
     return doCurate(request, page_num = 1)
 
+@view_config(route_name = "shutdown", renderer = "home.pt", permission = "admin")
+def shutdown(request):
+    import os
+    os.system("sudo shutdown -h now")
+    request.session.flash(_("System will shutdown now."))
+    return HTTPFound(location = route_url("home", request))
 
 @view_config(route_name = "curate", renderer = "templates/curate.pt", permission = "admin")
 def curate(request):
@@ -229,11 +232,7 @@ def doCurate(request = None, page_num = 1, limit = 10):
 
         # Next, disable deselected code IDs
         hidden = json.loads(request.params.get("enabled"))
-        print "::::HIDDEN: " + str(set(hidden))
-        print "::::SELECTED: " + str(set(selectedCodeIDs))
-        print "::::DIFFERENCE: " + str(set(hidden) - set(selectedCodeIDs))
         toDeselect = set(hidden) - set(selectedCodeIDs)
-        print toDeselect
         codes = session.query(Sylloge).filter(Sylloge.id.in_(toDeselect)).all()
         for code in codes:
             code.enabled = 0
