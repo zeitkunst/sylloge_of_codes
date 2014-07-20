@@ -203,6 +203,12 @@ def curate_nopagenum(request):
     
     return doCurate(request, page_num = 1)
 
+@view_config(route_name = "shutdown", renderer = "home.pt", permission = "admin")
+def shutdown(request):
+    import os
+    os.system("sudo shutdown -h now")
+    request.session.flash(_("System will shutdown now."))
+    return HTTPFound(location = route_url("home", request))
 
 @view_config(route_name = "curate", renderer = "templates/curate.pt", permission = "admin")
 def curate(request):

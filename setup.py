@@ -26,6 +26,7 @@ requires = [
     'pycrypto',
     'pyramid_beaker',
     'bcrypt',
+    'uwsgi',
     ]
 
 setup(name='sylloge_of_codes',
