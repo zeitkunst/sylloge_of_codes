@@ -86,11 +86,13 @@ def main(argv = sys.argv):
         try:
             with open(xelatexFile, "w") as f:
                 f.write(document.encode("utf-8"))
-                print "Working on %s" % xelatexFile
-                os.system("cd %s; latexmk -xelatex %s" % (tempDir, xelatexFile))
-                os.system("mv %s %s" % (xelatexFilePDF, outputPath))
-        except (IOError, OSError) as e:
+        except (IOError, OSError, Failure) as e:
             print "Error: ", e
+            continue
+        
+        print "Working on %s" % xelatexFile
+        os.system("cd %s; latexmk -xelatex %s" % (tempDir, xelatexFile))
+        os.system("mv %s %s" % (xelatexFilePDF, outputPath))
 
         # TODO
         # This is brittle, but I don't know how to get the "server:main" section from the ini file
