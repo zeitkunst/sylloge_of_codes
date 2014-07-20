@@ -17,7 +17,10 @@
             
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
-                    <p i18n:translate="aboutP1">Some credits here</p>
+                    <p i18n:translate="">Translations by Claudia Pederson.</p>
+                    <p i18n:translate="">Thanks to Daniela Rivera for patience with the extended amount of time it took to realize this project!</p>
+                    <p i18n:translate="">Funding for <em i18n:name="sylloge_of_codes">sylloge of codes</em> came from a Faculty Award at Wellesley College.</p>
+                    <p i18n:translate="">All code for the <a href="https://github.com/zeitkunst/sylloge_of_codes" i18n:name="website" i18n:translate="">website</a> and the <a href="https://github.com/zeitkunst/sylloge_of_codes_of" i18n:name="projection" i18n:translate="">projection</a> is available from github.</p> 
                 </div>
             </div>
         </div>

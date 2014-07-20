@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-offset-2 col-xs-8">
-                    <p i18n:translate="PDFMoreInfo">For more information about this project, please visit <a href="http://sylloge-of-codes.net">sylloge-of-codes.net</a>.</p>
+                    <p i18n:translate="PDFMoreInfo">For more information about this project, please visit <a i18n:name="sylloge_website" href="http://sylloge-of-codes.net">sylloge-of-codes.net</a>.</p>
                 </div>
             </div>
 

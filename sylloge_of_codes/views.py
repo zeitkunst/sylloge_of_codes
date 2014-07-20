@@ -36,9 +36,6 @@ _ = TranslationStringFactory("sylloge_of_codes")
 
 class SyllogeSQLAlchemySchemaNode(SQLAlchemySchemaNode):
     def get_schema_from_column(self, prop, override):
-        print dir(prop)
-        print prop.key
-        print "PROP: " + str(prop)
         if (prop.key == "enabled"):
             return colander.SchemaNode(colander.Boolean(), name = "Enabled", missing = False)
 
@@ -121,8 +118,11 @@ def print_test(request):
 @view_config(route_name="submitted", renderer="templates/submitted.pt")
 def print_page(request):
     session = DBSession()
-    rand = random.randrange(0, session.query(Sylloge).filter(Sylloge.pdf_processed == 1).count())
-    row = session.query(Sylloge)[rand]
+    #rand = random.randrange(0, session.query(Sylloge).filter(Sylloge.enabled == 1).filter(Sylloge.pdf_processed == 1).count())
+    ids = session.query(Sylloge.id).filter(Sylloge.enabled == 1).filter(Sylloge.pdf_processed == 1).all()
+    chosenID = random.sample(ids, 1)
+    print chosenID[0][0]
+    row = session.query(Sylloge.pdf_path).filter(Sylloge.id == chosenID[0][0]).one()
 
 
     return {"title": "Sylloge of Codes Thanks", "pdf_url": row.pdf_path}
@@ -229,11 +229,7 @@ def doCurate(request = None, page_num = 1, limit = 10):
 
         # Next, disable deselected code IDs
         hidden = json.loads(request.params.get("enabled"))
-        print "::::HIDDEN: " + str(set(hidden))
-        print "::::SELECTED: " + str(set(selectedCodeIDs))
-        print "::::DIFFERENCE: " + str(set(hidden) - set(selectedCodeIDs))
         toDeselect = set(hidden) - set(selectedCodeIDs)
-        print toDeselect
         codes = session.query(Sylloge).filter(Sylloge.id.in_(toDeselect)).all()
         for code in codes:
             code.enabled = 0
