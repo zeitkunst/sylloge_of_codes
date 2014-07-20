@@ -86,7 +86,7 @@ def main(argv = sys.argv):
         # Brittle, as the path is hard-coded in...need to figure out a better way of doing this
         staticPath = "/static/pdf/sylloge_of_codes_%05d.pdf" % id
         #outputPath = os.path.join("/Users/nknouf/Dropbox/projects/sylloge_of_codes/web/sylloge_of_codes/sylloge_of_codes", staticPath)
-        outputPath = "/Users/nknouf/Dropbox/projects/sylloge_of_codes/web/sylloge_of_codes/sylloge_of_codes/sylloge_of_codes" + staticPath
+        outputPath = "/home/pi/development/sylloge_web/sylloge_of_codes/sylloge_of_codes/sylloge_of_codes" + staticPath
        
 
         try:
