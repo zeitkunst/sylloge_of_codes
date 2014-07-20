@@ -96,7 +96,7 @@ def main(argv = sys.argv):
             print "Error: ", e
             continue
         
-        print "Working on %s" % xelatexFile
+        print "Working on id %d (%s)" % (id, xelatexFile)
         os.system("cd %s; latexmk -xelatex %s" % (tempDir, xelatexFile))
         os.system("mv %s %s" % (xelatexFilePDF, outputPath))
 
