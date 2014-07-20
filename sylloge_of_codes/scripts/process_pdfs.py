@@ -1,5 +1,5 @@
 #vim: set fileencoding=utf-8
-import os, sys, tempfile
+import os, re, sys, tempfile
 
 from pyramid.paster import get_appsettings
 from sqlalchemy.orm.exc import NoResultFound
@@ -69,8 +69,14 @@ def main(argv = sys.argv):
     
     for result in results:
         id = result.id
-
-        document = xelatexDocument % (result.pseudonym, str(result.code_date), result.code)
+       
+        # Escape usual latex characters
+        processedCode = ""
+        processedCode = re.sub(r'\\', '\\\\textbackslash ', result.code)
+        processedCode = re.sub(r'\^', '\\\\textasciicircum ', processedCode)
+        processedCode = re.sub(r'~', '\\\\textasciitilde ', processedCode)
+        processedCode = re.sub(r'([#\$%&_\{\}])', lambda m: "\%s" % m.group(1), processedCode)
+        document = xelatexDocument % (result.pseudonym, str(result.code_date), processedCode)
 
         tempDir = tempfile.mkdtemp()
         xelatexFile = os.path.join(tempDir, "sylloge.tex")

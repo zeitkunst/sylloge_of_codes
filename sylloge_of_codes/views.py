@@ -253,6 +253,11 @@ def doCurate(request = None, page_num = 1, limit = 10):
     #p2 = Pager(enabled, page_num, limit)
     
     codes = p.results
+    textiledCodes = []
+    for code in codes:
+        code.code = textile.textile(code.code)
+        textiledCodes.append(code)
+
     enabled = []
     for item in p.results:
         if item.enabled: enabled.append(item.id)
@@ -268,7 +273,7 @@ def doCurate(request = None, page_num = 1, limit = 10):
     else:
         previous_page = 0
 
-    return dict(title = _("Sylloge of Codes Curate"), codes = codes, pages = p.pages, page_num = page_num, previous_page = previous_page, next_page = next_page, hidden = json.dumps(enabled), action = route_url("curate", request, page_num = page_num))
+    return dict(title = _("Sylloge of Codes Curate"), codes = textiledCodes, pages = p.pages, page_num = page_num, previous_page = previous_page, next_page = next_page, hidden = json.dumps(enabled), action = route_url("curate", request, page_num = page_num))
 
 # CRUFT
 #    options = []

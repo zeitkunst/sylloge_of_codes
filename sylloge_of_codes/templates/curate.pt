@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-10">
                                 <p>Posted by ${code.pseudonym} on ${code.code_date}</p>
-                                <p>Code: ${code.code}</p>
+                                <p tal:replace="structure code.code">Code</p>
                             </div>
                         </p>
                         <input type="hidden" name="enabled" value="${hidden}" />
