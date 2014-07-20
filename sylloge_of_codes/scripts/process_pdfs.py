@@ -12,7 +12,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 from sylloge_of_codes.models import Sylloge
 
-xelatexDocument = r"""\documentclass[17pt,extrafontsizes,oneside]{nak}
+xelatexDocument = r"""\documentclass[17pt,extrafontsizes,oneside]{memoir}
 
 \setlrmarginsandblock{1.5in}{*}{*}
 \setulmarginsandblock{1.25in}{*}{*}
@@ -20,6 +20,9 @@ xelatexDocument = r"""\documentclass[17pt,extrafontsizes,oneside]{nak}
 \setlength{\parindent}{0pt}
 \nonzeroparskip
 
+\usepackage{fontspec}
+\usepackage{csquotes}
+\usepackage{hyperref}
 \usepackage{textcomp}
 
 \setromanfont [BoldFont={Adobe Jenson Pro Bold}, ItalicFont={Adobe Jenson Pro Italic}]{Adobe Jenson Pro}
