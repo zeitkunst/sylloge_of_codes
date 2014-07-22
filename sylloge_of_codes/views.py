@@ -18,8 +18,6 @@ from .models import (
     Media,
     )
 
-from wkhtmltopdf import wkhtmltopdf
-
 import textile
 
 import colander
