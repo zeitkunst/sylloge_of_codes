@@ -56,7 +56,6 @@ def submit(request):
     # Not sure if this is the best way of doing things, but it's the only way I can think of to pass in the locale from the request, without jumping through a lot of hoops
     class Code(colander.Schema):
         code = colander.SchemaNode(colander.String(), title = _("Code"), widget = TextAreaWidget(rows = 6, css_class = "form-control"), missing_msg = _("Error: you must enter a code"),)
-        comments = colander.SchemaNode(colander.String(), title = _("(Optional) Comments about this idea?"), missing = '', widget = TextAreaWidget(rows = 6, css_class = "form-control"))
         pseudonym = colander.SchemaNode(colander.String(), title = _("Pseudonym"), widget = TextInputWidget(css_class = "form-control"))
         _LOCALE_ = colander.SchemaNode(colander.String(), widget = HiddenWidget(), default = get_locale_name(request))
     
@@ -73,7 +72,6 @@ def submit(request):
         # TODO
         # Add in some sort of form validation, as in the Fluid Nexus website
         code = request.params["code"]
-        comments = request.params["comments"]
         pseudonym = request.params["pseudonym"]
         try:
             mediaFilePath = request.params["mediaFilePath"]
@@ -83,7 +81,7 @@ def submit(request):
         except KeyError:
             mediaFilePath = None
 
-        code = Sylloge(code = code, comments = comments, pseudonym = pseudonym)
+        code = Sylloge(code = code, pseudonym = pseudonym)
         session.add(code)
         
         # TODO
@@ -246,7 +244,7 @@ def doCurate(request = None, page_num = 1, limit = 10):
         return HTTPFound(location = route_url("curate", request, page_num = int(page_num)))
 
 
-    codes = session.query(Sylloge.id, Sylloge.enabled, Sylloge.code_date, Sylloge.code, Sylloge.pseudonym, Sylloge.comments).order_by(desc(Sylloge.code_date))
+    codes = session.query(Sylloge.id, Sylloge.enabled, Sylloge.code_date, Sylloge.code, Sylloge.pseudonym).order_by(desc(Sylloge.code_date))
     p = Pager(codes, page_num, limit)
     #enabled= session.query(Sylloge.id).filter(Sylloge.enabled == 1).all()
     #enabled = [item.id for item in p2.results]
@@ -275,26 +273,4 @@ def doCurate(request = None, page_num = 1, limit = 10):
 
     return dict(title = _("Sylloge of Codes Curate"), codes = textiledCodes, pages = p.pages, page_num = page_num, previous_page = previous_page, next_page = next_page, hidden = json.dumps(enabled), action = route_url("curate", request, page_num = page_num))
 
-# CRUFT
-#    options = []
-#    for result in results:
-#        output = """<p>Posted by %s on %s:</p>
-#        <p>Code: %s</p>
-#        <p>Comment: %s</p>""" % (result.pseudonym, str(result.code_date), result.code, str(result.comments))
-#        #output = "\n".join([str(result.code_date), result.pseudonym, result.code, str(result.comments)])
-#        options.append((result.id, output))
-#
-#    class SchemaTest(colander.Schema):
-#        option = colander.SchemaNode(
-#                colander.Set(),
-#                widget = CheckboxChoiceWidget(values = options)
-#                )
-#    
-#    schema = SchemaTest()
-#    form = Form(schema, buttons = ('submit',))
-#
-#    #form = SyllogeSQLAlchemySchemaNode(Sylloge, includes = ["enabled", "code_date", "code", "pseudonym", "comments"])
-#    #Form(form, buttons=("submit",)).render()
-#    
-#    #return {"title":_("Sylloge of Codes Curate"), "form": form.render()}
-#
+
