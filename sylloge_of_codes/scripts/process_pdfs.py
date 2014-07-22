@@ -5,8 +5,6 @@ from pyramid.paster import get_appsettings
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy import engine_from_config
 
-from wkhtmltopdf import wkhtmltopdf
-
 from zope.sqlalchemy import ZopeTransactionExtension
 from sqlalchemy.orm import scoped_session, sessionmaker
 
