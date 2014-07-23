@@ -9,13 +9,11 @@ from pyramid.i18n import get_locale_name, TranslationStringFactory
 from pyramid.security import remember, forget, authenticated_userid
 
 from sqlalchemy import desc
-from sqlalchemy.exc import DBAPIError
 from sqlalchemy.orm.exc import NoResultFound
 
 from .models import (
     DBSession,
     Sylloge,
-    Media,
     )
 
 import textile
@@ -117,9 +115,7 @@ def print_page(request):
     #rand = random.randrange(0, session.query(Sylloge).filter(Sylloge.enabled == 1).filter(Sylloge.pdf_processed == 1).count())
     ids = session.query(Sylloge.id).filter(Sylloge.enabled == 1).filter(Sylloge.pdf_processed == 1).all()
     chosenID = random.sample(ids, 1)
-    print chosenID[0][0]
     row = session.query(Sylloge.pdf_path).filter(Sylloge.id == chosenID[0][0]).one()
-
 
     return {"title": "Sylloge of Codes Thanks", "pdf_url": row.pdf_path}
 
