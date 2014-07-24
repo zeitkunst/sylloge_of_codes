@@ -21,6 +21,7 @@
                 <div tal:replace="structure form">
                 </div>
                 <p i18n:translate="">By submitting you agree that all you own the content and that you agree to license it under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" i18n:name="ccName">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+                <p i18n:translate="">Be patient with the submission; the computer that stores the sylloge is rather diminutive, and thus isn't terribly speedy.</p>
                 </div>
             </div>
         </div>

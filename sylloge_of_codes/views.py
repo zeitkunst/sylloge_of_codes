@@ -1,4 +1,5 @@
 import random
+from datetime import datetime
 
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound, HTTPForbidden
 from pyramid.exceptions import NotFound
@@ -25,10 +26,14 @@ from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget, Checkbo
 
 import json
 
+from pytz import timezone
+
 from models import Curator
 from pager import Pager
 
 _ = TranslationStringFactory("sylloge_of_codes")
+currentTimezone = "Pacific/Easter"
+chile_tz = timezone(currentTimezone)
 
 class SyllogeSQLAlchemySchemaNode(SQLAlchemySchemaNode):
     def get_schema_from_column(self, prop, override):
@@ -248,6 +253,9 @@ def doCurate(request = None, page_num = 1, limit = 10):
     textiledCodes = []
     for code in codes:
         code.code = textile.textile(code.code)
+        #dt = datetime.strptime(code.code_date, "%Y-%m-%d %H:%M:%S.%f")
+        localizedDatetime = chile_tz.localize(code.code_date)
+        code.code_date = localizedDatetime.strftime("%d %B %Y, %H:%M:%S")
         textiledCodes.append(code)
 
     enabled = []

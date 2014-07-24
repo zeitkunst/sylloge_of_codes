@@ -8,32 +8,222 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sylloge_of_codes 1.0\n"
 "Report-Msgid-Bugs-To: nknouf@zeitkunst.org\n"
-"POT-Creation-Date: 2014-07-15 17:25-04:00\n"
-"PO-Revision-Date: 2014-07-15 17:30-0500\n"
+"POT-Creation-Date: 2014-07-24 12:44-04:00\n"
+"PO-Revision-Date: 2014-07-24 13:00-0500\n"
 "Last-Translator: Claudia Pederson <ccp9@cornell.edu>\n"
 "Language-Team: Spanish\n"
-"Language: es_CL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_CL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Generator: Poedit 1.6.7\n"
+
+#: sylloge_of_codes/views.py:194
+#, c-format
+msgid "You have been logged out."
+msgstr "Se le ha cerrado la sesión."
+
+#: sylloge_of_codes/views.py:207
+#, c-format
+msgid "System will shutdown now."
+msgstr "Sistema se apagará ahora."
+
+#: sylloge_of_codes/views.py:218
+#, c-format
+msgid "Sylloge of Codes Admin"
+msgstr "Sylloge de códigos de administración"
+
+#: sylloge_of_codes/views.py:90
+#, c-format
+msgid "Code was submitted successfully."
+msgstr "Código se ha enviado correctamente."
+
+#: sylloge_of_codes/views.py:159
+#, c-format
+msgid "You are already logged in."
+msgstr "Usted ya está registrado"
+
+#: sylloge_of_codes/views.py:181
+#, c-format
+msgid "Failed login"
+msgstr "Error de acceso"
+
+#: sylloge_of_codes/views.py:188
+#, c-format
+msgid "Sylloge of Codes Login"
+msgstr "Sylloge de Códigos Login"
+
+#: sylloge_of_codes/views.py:242
+#, c-format
+msgid "Codes updated."
+msgstr "Códigos actualizado."
+
+#: sylloge_of_codes/views.py:276
+#, c-format
+msgid "Sylloge of Codes Curate"
+msgstr "Sylloge de Códigos Curate"
+
+#: sylloge_of_codes/views.py:59 sylloge_of_codes/templates/curate.pt:58
+#, c-format
+msgid "Code"
+msgstr "Código"
+
+#: sylloge_of_codes/views.py:59
+#, c-format
+msgid "Error: you must enter a code"
+msgstr "Error: se debe introducir un código de"
+
+#: sylloge_of_codes/views.py:60
+#, c-format
+msgid "Pseudonym"
+msgstr "Seudónimo"
+
+#: sylloge_of_codes/views.py:178
+#, c-format
+msgid "You are now logged in."
+msgstr "Ahora está conectado pulg"
+
+#: sylloge_of_codes/views.py:63 sylloge_of_codes/templates/curate.pt:92
+#: sylloge_of_codes/templates/login.pt:68
+#, c-format
+msgid "Submit"
+msgstr "Presentar"
+
+#. Default: about sylloge of codes
+#: sylloge_of_codes/templates/about.pt:11
+msgid "syllogeAbout"
+msgstr "sobre Sylloge de códigos"
+
+#: sylloge_of_codes/templates/about.pt:30
+msgid ""
+"Website coded in python using the pyramid framework and a plethora of "
+"additional modules. Projection coded in Open Frameworks. All runs on a "
+"single Raspberry Pi."
+msgstr ""
+"Sitio web codificada en python utilizando el marco de pirámide y una gran "
+"cantidad de módulos adicionales. Proyección codificada en los marcos "
+"abiertos. Todo se ejecuta en una sola Raspberry Pi."
+
+#. Default: admin sylloge of codes
+#. Default: curate sylloge of codes
+#: sylloge_of_codes/templates/admin.pt:11
+#: sylloge_of_codes/templates/curate.pt:11
+msgid "syllogeCurate"
+msgstr "cura Sylloge de códigos"
+
+#: sylloge_of_codes/templates/admin.pt:32
+msgid "Curate"
+msgstr "Cura"
+
+#: sylloge_of_codes/templates/admin.pt:35
+msgid "Shutdown"
+msgstr "Cierre"
+
+#: sylloge_of_codes/templates/admin.pt:38
+msgid "Logout"
+msgstr "Salir"
+
+#. Default: submit
+#: sylloge_of_codes/templates/base.pt:76
+msgid "submitMenu"
+msgstr "presentar"
 
 #. Default: about
-#: sylloge_of_codes/templates/base.pt:74
+#: sylloge_of_codes/templates/base.pt:79
 msgid "aboutMenu"
 msgstr "sobre"
 
 #. Default: credits
-#: sylloge_of_codes/templates/base.pt:77
+#: sylloge_of_codes/templates/base.pt:82
 msgid "creditsMenu"
 msgstr "créditos"
 
 #. Default: Nicholas Knouf and the respective contributors. All content is
 #. licensed under a
-#: sylloge_of_codes/templates/base.pt:103
+#: sylloge_of_codes/templates/base.pt:115
 msgid "footerCopyright"
 msgstr ""
+"Nicholas Knouf y los respectivos contribuyentes. Todo el contenido es bajo "
+"una licencia"
+
+#: sylloge_of_codes/templates/base.pt:118
+msgid "Admin"
+msgstr "Administración"
+
+#. Default: sylloge of codes credits
+#: sylloge_of_codes/templates/credits.pt:11
+msgid "syllogeCredits"
+msgstr "sylloge de códigos créditos"
+
+#: sylloge_of_codes/templates/credits.pt:30
+msgid "Translations by Claudia Pederson."
+msgstr "Traducciones de Claudia Pederson."
+
+#: sylloge_of_codes/templates/credits.pt:33
+msgid ""
+"Thanks to Daniela Rivera for patience with the extended amount of time it "
+"took to realize this project!"
+msgstr ""
+"Gracias a Daniela Rivera para la paciencia con la cantidad extendida de "
+"tiempo que tardó en darse cuenta de este proyecto!"
+
+#: sylloge_of_codes/templates/credits.pt:36
+msgid ""
+"Funding for ${sylloge_of_codes} came from a Faculty Award at Wellesley "
+"College."
+msgstr ""
+"La financiación de ${sylloge_of_codes} vino de un Premio de la Facultad en "
+"el Wellesley College."
+
+#: sylloge_of_codes/templates/credits.pt:42
+msgid "website"
+msgstr "sitio web"
+
+#: sylloge_of_codes/templates/credits.pt:44
+msgid "projection"
+msgstr "proyección"
+
+#: sylloge_of_codes/templates/credits.pt:41
+msgid ""
+"All code for the ${website} and the ${projection} is available from github."
+msgstr ""
+"Todo el código de la ${website} y ${projection} está disponible en GitHub."
+
+#: sylloge_of_codes/templates/credits.pt:48
+msgid ""
+"You can find more information about Nicholas Knouf at http://zeitkunst.org."
+msgstr ""
+"Usted puede encontrar más información acerca de Nicholas Knouf en http://"
+"zeitkunst.org."
+
+#: sylloge_of_codes/templates/curate.pt:32
+msgid "Admin Home."
+msgstr "Página principal de Administración."
+
+#: sylloge_of_codes/templates/curate.pt:34
+msgid "Curate Home"
+msgstr "Curate Inicio"
+
+#: sylloge_of_codes/templates/curate.pt:39
+msgid "Previous"
+msgstr "Previo"
+
+#: sylloge_of_codes/templates/curate.pt:41
+msgid "Page ${page_num} of ${pages}"
+msgstr "Página ${page_num} de ${páginas}"
+
+#: sylloge_of_codes/templates/curate.pt:43
+msgid "Next"
+msgstr "Próximo"
+
+#: sylloge_of_codes/templates/curate.pt:51
+msgid "Enabled"
+msgstr "Activado"
+
+#: sylloge_of_codes/templates/curate.pt:76
+msgid "Posted by ${code.pseudonym} on ${code.code_date}"
+msgstr "Publicado por ${code.pseudonym} en ${code.code_date}"
 
 #. Default: This is a time when electronic communications are surveilled the
 #. world over. Little seems to escape the computer programs and human analysts
@@ -45,20 +235,9 @@ msgstr ""
 #. into seemingly secure communications. What we're left feeling is
 #. helplessness, a distinct lack of power to respond, and a dangerous level of
 #. cynicism.
-#: sylloge_of_codes/templates/home.pt:16
+#: sylloge_of_codes/templates/home.pt:30
 msgid "firstP"
 msgstr ""
-"Este es un momento en que se realizó vigilancia de las comunicaciones "
-"electrónicas de la mundo. Poco parece escapar a los programas de ordenador y "
-"los analistas humanos que vierta sobre nuestros datos electrónicos a medida "
-"que atraviesa las fronteras nacionales a través de cables submarinos o el "
-"éter inalámbrica. Enviados en el claro, nuestros datos es comprensible por "
-"cualquier persona con un poco de conocimientos técnicos. Así que estamos "
-"pedido que cifrarlo, para confundir de alguna manera. Sin embargo, estos "
-"mismos programas y los analistas han hecho estas técnicas de cifrado "
-"débiles, puertas traseras de apertura en las comunicaciones aparentemente "
-"seguras. Lo que nos queda es la sensación impotencia, una clara falta de "
-"poder de responder, y un nivel peligroso de cinismo."
 
 #. Default: So if we can't trust that our messages pass from one person to
 #. another without being surveilled, no matter what computational steps we
@@ -67,16 +246,9 @@ msgstr ""
 #. information. They are horrible at dealing with the poetic, with sarcasm,
 #. with hidden messages, pidgin, and nuanced meanings. They cannot handle the
 #. unquantifiable.
-#: sylloge_of_codes/templates/home.pt:19
+#: sylloge_of_codes/templates/home.pt:33
 msgid "secondP"
 msgstr ""
-"Así que si no podemos confiar en que nuestros mensajes pasan de una persona "
-"a otro sin ser vigilado, no importa qué medidas computacionales nosotros "
-"tomar, ¿qué podemos hacer? Podemos pensar más poéticamente. Las computadoras "
-"son más bien máquinas tontas, sólo capaces de \"entender\" los medios más "
-"básicos de información. Ellos son horribles en tratar con lo poético, con "
-"sarcasmo, con mensajes ocultos, pidgin y significados matizadas. Ellos no "
-"pueden manejar el incuantificable."
 
 #. Default: This implies that we should be developing new, more poetic forms of
 #. communication that are resistant to analysis by computers. So consider this
@@ -84,44 +256,84 @@ msgstr ""
 #. collection, a reference to the dark ages where travellers would record
 #. ancient Roman and Greek inscriptions. We too will create a new sylloge of
 #. alternative forms of communication.
-#: sylloge_of_codes/templates/home.pt:22
+#: sylloge_of_codes/templates/home.pt:36
 msgid "thirdP"
 msgstr ""
-"Esto implica que debemos desarrollar nuevas formas más poéticas de la "
-"comunicación que son resistentes a análisis por computadoras. Así que "
-"considere esto una invitación, una invitación a crear una Sylloge de "
-"códigos. Un Sylloge es un colección, una referencia a la edad oscura, donde "
-"los viajeros se registrar antigua romana y las inscripciones griegas. "
-"También nosotros crearemos una nueva Sylloge de formas alternativas de "
-"comunicación."
 
-#. Default: Code
-#: sylloge_of_codes/templates/home.pt:44
-msgid "code_label"
-msgstr "Código"
+#. Default: submit code
+#: sylloge_of_codes/templates/home.pt:39
+msgid "largeSubmitLink"
+msgstr "enviar código"
 
-#. Default: (Optional) Comments about this idea?
-#: sylloge_of_codes/templates/home.pt:53
-msgid "comments_label"
-msgstr "(Opcional) Comentarios sobre esta idea?"
+#. Default: Username:
+#: sylloge_of_codes/templates/login.pt:42
+msgid "username"
+msgstr "Nombre de usuario:"
 
-#. Default: Pseudonym
-#: sylloge_of_codes/templates/home.pt:63
-msgid "pseudonym_label"
-msgstr "Seudónimo"
+#. Default: Password:
+#: sylloge_of_codes/templates/login.pt:55
+msgid "password"
+msgstr "Contraseña:"
 
-#. Default: Submit
-#: sylloge_of_codes/templates/home.pt:72
-msgid "submit_code_button_label"
-msgstr "Presentar"
+#. Default: The requested resource was not found for the following reason:
+#: sylloge_of_codes/templates/notfound.pt:12
+msgid "notFoundMessage"
+msgstr "El recurso solicitado no fue encontrado por la siguiente razón:"
 
 #. Default: Contributed by ${pseudonym} on ${date}
 #: sylloge_of_codes/templates/render_pdf.pt:20
 msgid "PDFContribution"
-msgstr ""
+msgstr "Contribución de ${pseudonym} en ${fecha}"
 
-#. Default: For more information about this project, please visit <dynamic
-#. element>.
+#. Default: For more information about this project, please visit
+#. ${sylloge_website}.
 #: sylloge_of_codes/templates/render_pdf.pt:44
 msgid "PDFMoreInfo"
 msgstr ""
+"Para obtener más información sobre este proyecto, por favor visite "
+"${sylloge_website}."
+
+#: sylloge_of_codes/templates/submit.pt:30
+msgid "submit code"
+msgstr "enviar código"
+
+#: sylloge_of_codes/templates/submit.pt:37
+msgid ""
+"By submitting you agree that all you own the content and that you agree to "
+"license it under a ${ccName}."
+msgstr ""
+"Al enviar aceptas que todo lo que el propietario del contenido y que están "
+"de acuerdo en licenciarlo bajo un ${ccName}."
+
+#: sylloge_of_codes/templates/submit.pt:42
+msgid ""
+"Be patient with the submission; the computer that stores the sylloge is "
+"rather diminutive, and thus isn't terribly speedy."
+msgstr ""
+"Sea paciente con la presentación; el ordenador que almacena el Sylloge es "
+"más bien diminuto, y por lo tanto no es muy rápida."
+
+#. Default: sylloge of codes
+#: sylloge_of_codes/templates/submitted.pt:11
+msgid "syllogeTitle"
+msgstr "sylloge de códigos"
+
+#. Default: thanks for your submission
+#: sylloge_of_codes/templates/submitted.pt:14
+msgid "syllogeThanks"
+msgstr "gracias por su presentación"
+
+#. Default: download a random code
+#: sylloge_of_codes/templates/submitted.pt:34
+msgid "pdfURL"
+msgstr "descargar un código aleatorio"
+
+#. Default: If you would like, you can ${download_code} submitted by another
+#. contributor. If you find the code interesting and would like to share how
+#. you used it, you can e-mail code@sylloge-of-codes.net.
+#: sylloge_of_codes/templates/submitted.pt:33
+msgid "submittedText"
+msgstr ""
+"Si usted lo desea, usted puede ${download_code} presentada por otra "
+"contribuyente. Si encuentra que el código interesante y le gustaría "
+"compartir cómo lo utilizó, puede enviar un e-mail code@sylloge-of-codes.net."

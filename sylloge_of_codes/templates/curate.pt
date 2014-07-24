@@ -19,7 +19,7 @@
                 <div class="col-md-offset-2 col-md-8">
                     <div class="pager">
                         <p><a href="/admin" i18n:translate="">Admin Home.</a> <a href="/curate" i18n:translate="">Curate Home</a>.</p>
-                        <p> <tal:block condition="previous_page"><a href="/curate/${previous_page}" i18n:translate="">Previous</a></tal:block> Page ${page_num} of ${pages}.  <tal:block condition="next_page"><a href="/curate/${next_page}" i18n:translate="">Next</a></tal:block></p>
+                        <p> <tal:block condition="previous_page"><a href="/curate/${previous_page}" i18n:translate="">Previous</a></tal:block> <span i18n:translate="">Page ${page_num} of ${pages}</span>.  <tal:block condition="next_page"><a href="/curate/${next_page}" i18n:translate="">Next</a></tal:block></p>
                     </div>
 
                     <div class="col-md-2">
@@ -35,14 +35,14 @@
                                 <input type="checkbox" name="selectedCodes" value="${code.id}" checked="${code.enabled and 'checked' or None}"/>
                             </div>
                             <div class="col-md-10">
-                                <p>Posted by ${code.pseudonym} on ${code.code_date}</p>
+                                <p i18n:translate="">Posted by ${code.pseudonym} on ${code.code_date}</p>
                                 <p tal:replace="structure code.code">Code</p>
                             </div>
                         </p>
                         <input type="hidden" name="enabled" value="${hidden}" />
                         <p>
                             <button id="curateSubmit" name="submit" type="submit" class="btnText submit btn btn-primary btn-lg" value="submit">
-                                <span>Submit</span>
+                                <span i18n:translate="">Submit</span>
                             </button>
                         </p>
                     </form>

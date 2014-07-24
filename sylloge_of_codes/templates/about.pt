@@ -17,7 +17,7 @@
             
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
-                    <p i18n:translate="aboutP1">Some about here</p>
+                    <p i18n:translate="">Website coded in python using the pyramid framework and a plethora of additional modules. Projection coded in Open Frameworks. All runs on a single Raspberry Pi.</p>
                 </div>
             </div>
         </div>
