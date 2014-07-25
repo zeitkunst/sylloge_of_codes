@@ -25,7 +25,6 @@ import textile
 
 import colander
 from colanderalchemy import SQLAlchemySchemaNode
-import deform
 from deform import Form, ValidationFailure, Button
 from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget, CheckboxChoiceWidget
 
@@ -41,6 +40,7 @@ currentTimezone = "Pacific/Easter"
 chile_tz = timezone(currentTimezone)
 
 # TOO SLOW on the Pi
+#import deform
 #def translator(term):
 #    return get_localizer(get_current_request()).translate(term)
 #
