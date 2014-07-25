@@ -30,10 +30,12 @@ def main(global_config, **settings):
     config.set_session_factory(session_factory)
     config.include('pyramid_chameleon')
     config.include('pyramid_beaker')
-    config.add_translation_dirs(
-            "sylloge_of_codes:locale", 
-            "colander:locale",
-            "deform:locale")
+    config.add_translation_dirs("sylloge_of_codes:locale") 
+    # TOO SLOW for the Pi
+#    config.add_translation_dirs(
+#            "sylloge_of_codes:locale", 
+#            "colander:locale",
+#            "deform:locale")
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
     config.add_route('submit', '/submit')
