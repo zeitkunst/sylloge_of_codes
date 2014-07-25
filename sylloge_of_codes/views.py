@@ -1,13 +1,17 @@
+# -*- coding: utf-8 -*-
 import random
 from datetime import datetime
+
+from pkg_resources import resource_filename
 
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound, HTTPForbidden
 from pyramid.exceptions import NotFound
 from pyramid.response import Response
 from pyramid.url import route_url
 from pyramid.view import view_config, notfound_view_config, forbidden_view_config
-from pyramid.i18n import get_locale_name, TranslationStringFactory
+from pyramid.i18n import get_localizer, get_locale_name, TranslationStringFactory
 from pyramid.security import remember, forget, authenticated_userid
+from pyramid.threadlocal import get_current_request
 
 from sqlalchemy import desc
 from sqlalchemy.orm.exc import NoResultFound
@@ -21,6 +25,7 @@ import textile
 
 import colander
 from colanderalchemy import SQLAlchemySchemaNode
+import deform
 from deform import Form, ValidationFailure, Button
 from deform.widget import TextAreaWidget, HiddenWidget, TextInputWidget, CheckboxChoiceWidget
 
@@ -34,6 +39,15 @@ from pager import Pager
 _ = TranslationStringFactory("sylloge_of_codes")
 currentTimezone = "Pacific/Easter"
 chile_tz = timezone(currentTimezone)
+
+def translator(term):
+    return get_localizer(get_current_request()).translate(term)
+
+deform_template_dir = resource_filename('deform', 'templates/')
+
+zpt_renderer = deform.ZPTRendererFactory(
+            [deform_template_dir], translator=translator)
+deform.Form.set_default_renderer(zpt_renderer)
 
 class SyllogeSQLAlchemySchemaNode(SQLAlchemySchemaNode):
     def get_schema_from_column(self, prop, override):
@@ -58,7 +72,8 @@ def submit(request):
     class Code(colander.Schema):
         code = colander.SchemaNode(colander.String(), title = _("Code"), widget = TextAreaWidget(rows = 6, css_class = "form-control"), missing_msg = _("Error: you must enter a code"),)
         pseudonym = colander.SchemaNode(colander.String(), title = _("Pseudonym"), widget = TextInputWidget(css_class = "form-control"))
-        _LOCALE_ = colander.SchemaNode(colander.String(), widget = HiddenWidget(), default = get_locale_name(request))
+        #_LOCALE_ = colander.SchemaNode(colander.String(), widget = HiddenWidget(), default = get_locale_name(request))
+        _LOCALE_ = colander.SchemaNode(colander.String(), widget = HiddenWidget(), default = "es_CL")
     
     form = Form(Code(), buttons=[Button("submit", _("Submit"), css_class = "btn btn-primary btn-lg")])
 

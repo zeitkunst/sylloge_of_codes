@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sylloge_of_codes 1.0\n"
 "Report-Msgid-Bugs-To: nknouf@zeitkunst.org\n"
 "POT-Creation-Date: 2014-07-24 12:44-04:00\n"
-"PO-Revision-Date: 2014-07-24 13:00-0500\n"
+"PO-Revision-Date: 2014-07-24 16:02-0500\n"
 "Last-Translator: Claudia Pederson <ccp9@cornell.edu>\n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Sistema se apagará ahora."
 #: sylloge_of_codes/views.py:218
 #, c-format
 msgid "Sylloge of Codes Admin"
-msgstr "Sylloge de códigos de administración"
+msgstr "administración del Sylloge de códigos "
 
 #: sylloge_of_codes/views.py:90
 #, c-format
@@ -57,7 +57,7 @@ msgstr "Sylloge de Códigos Login"
 #: sylloge_of_codes/views.py:242
 #, c-format
 msgid "Codes updated."
-msgstr "Códigos actualizado."
+msgstr "Códigos actualizados."
 
 #: sylloge_of_codes/views.py:276
 #, c-format
@@ -72,7 +72,7 @@ msgstr "Código"
 #: sylloge_of_codes/views.py:59
 #, c-format
 msgid "Error: you must enter a code"
-msgstr "Error: se debe introducir un código de"
+msgstr "Error: se debe introducir un código "
 
 #: sylloge_of_codes/views.py:60
 #, c-format
@@ -88,7 +88,7 @@ msgstr "Ahora está conectado pulg"
 #: sylloge_of_codes/templates/login.pt:68
 #, c-format
 msgid "Submit"
-msgstr "Presentar"
+msgstr "Enviar"
 
 #. Default: about sylloge of codes
 #: sylloge_of_codes/templates/about.pt:11
@@ -101,7 +101,7 @@ msgid ""
 "additional modules. Projection coded in Open Frameworks. All runs on a "
 "single Raspberry Pi."
 msgstr ""
-"Sitio web codificada en python utilizando el marco de pirámide y una gran "
+"Sitio web codificado en python utilizando el marco de pirámide y una gran "
 "cantidad de módulos adicionales. Proyección codificada en los marcos "
 "abiertos. Todo se ejecuta en una sola Raspberry Pi."
 
@@ -127,12 +127,12 @@ msgstr "Salir"
 #. Default: submit
 #: sylloge_of_codes/templates/base.pt:76
 msgid "submitMenu"
-msgstr "presentar"
+msgstr "Menu de envio "
 
 #. Default: about
 #: sylloge_of_codes/templates/base.pt:79
 msgid "aboutMenu"
-msgstr "sobre"
+msgstr "sobre el menu"
 
 #. Default: credits
 #: sylloge_of_codes/templates/base.pt:82
@@ -154,27 +154,25 @@ msgstr "Administración"
 #. Default: sylloge of codes credits
 #: sylloge_of_codes/templates/credits.pt:11
 msgid "syllogeCredits"
-msgstr "sylloge de códigos créditos"
+msgstr "créditos"
 
 #: sylloge_of_codes/templates/credits.pt:30
 msgid "Translations by Claudia Pederson."
-msgstr "Traducciones de Claudia Pederson."
+msgstr "Traducido por Claudia Pederson."
 
 #: sylloge_of_codes/templates/credits.pt:33
 msgid ""
 "Thanks to Daniela Rivera for patience with the extended amount of time it "
 "took to realize this project!"
-msgstr ""
-"Gracias a Daniela Rivera para la paciencia con la cantidad extendida de "
-"tiempo que tardó en darse cuenta de este proyecto!"
+msgstr "Gracias a Daniela Rivera por su paciencia y apoyo a este proyecto!"
 
 #: sylloge_of_codes/templates/credits.pt:36
 msgid ""
 "Funding for ${sylloge_of_codes} came from a Faculty Award at Wellesley "
 "College."
 msgstr ""
-"La financiación de ${sylloge_of_codes} vino de un Premio de la Facultad en "
-"el Wellesley College."
+"Apoyo financiero a ${sylloge_of_codes} vino desde de una beca de el "
+"Wellesley College."
 
 #: sylloge_of_codes/templates/credits.pt:42
 msgid "website"
@@ -203,7 +201,7 @@ msgstr "Página principal de Administración."
 
 #: sylloge_of_codes/templates/curate.pt:34
 msgid "Curate Home"
-msgstr "Curate Inicio"
+msgstr "Cura Inicio"
 
 #: sylloge_of_codes/templates/curate.pt:39
 msgid "Previous"
@@ -302,16 +300,16 @@ msgid ""
 "By submitting you agree that all you own the content and that you agree to "
 "license it under a ${ccName}."
 msgstr ""
-"Al enviar aceptas que todo lo que el propietario del contenido y que están "
-"de acuerdo en licenciarlo bajo un ${ccName}."
+"Al enviar acepta que todo el contenido es su propriadad que están de acuerdo "
+"en licenciarlo bajo un ${ccName}."
 
 #: sylloge_of_codes/templates/submit.pt:42
 msgid ""
 "Be patient with the submission; the computer that stores the sylloge is "
 "rather diminutive, and thus isn't terribly speedy."
 msgstr ""
-"Sea paciente con la presentación; el ordenador que almacena el Sylloge es "
-"más bien diminuto, y por lo tanto no es muy rápida."
+"Sea paciente con el envío de contenido; el ordenador que almacena el Sylloge "
+"es diminutivo, y por lo tanto no muy rápido."
 
 #. Default: sylloge of codes
 #: sylloge_of_codes/templates/submitted.pt:11
@@ -321,7 +319,7 @@ msgstr "sylloge de códigos"
 #. Default: thanks for your submission
 #: sylloge_of_codes/templates/submitted.pt:14
 msgid "syllogeThanks"
-msgstr "gracias por su presentación"
+msgstr "gracias por su envio"
 
 #. Default: download a random code
 #: sylloge_of_codes/templates/submitted.pt:34
@@ -334,6 +332,6 @@ msgstr "descargar un código aleatorio"
 #: sylloge_of_codes/templates/submitted.pt:33
 msgid "submittedText"
 msgstr ""
-"Si usted lo desea, usted puede ${download_code} presentada por otra "
-"contribuyente. Si encuentra que el código interesante y le gustaría "
-"compartir cómo lo utilizó, puede enviar un e-mail code@sylloge-of-codes.net."
+"Si usted lo desea, usted puede ${download_code} contribuydo por otra "
+"visitante. Si encuentra el código interesante y le gustaría compartir cómo "
+"lo utilizó, puede enviar un e-mail code@sylloge-of-codes.net."
