@@ -40,14 +40,15 @@ _ = TranslationStringFactory("sylloge_of_codes")
 currentTimezone = "Pacific/Easter"
 chile_tz = timezone(currentTimezone)
 
-def translator(term):
-    return get_localizer(get_current_request()).translate(term)
-
-deform_template_dir = resource_filename('deform', 'templates/')
-
-zpt_renderer = deform.ZPTRendererFactory(
-            [deform_template_dir], translator=translator)
-deform.Form.set_default_renderer(zpt_renderer)
+# TOO SLOW on the Pi
+#def translator(term):
+#    return get_localizer(get_current_request()).translate(term)
+#
+#deform_template_dir = resource_filename('deform', 'templates/')
+#
+#zpt_renderer = deform.ZPTRendererFactory(
+#            [deform_template_dir], translator=translator)
+#deform.Form.set_default_renderer(zpt_renderer)
 
 class SyllogeSQLAlchemySchemaNode(SQLAlchemySchemaNode):
     def get_schema_from_column(self, prop, override):
