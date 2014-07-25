@@ -56,6 +56,9 @@ The installation is set to start automatically on boot. After the Linux boot mes
 
 The second step is "start uwsgi". This starts up the embedded web server.
 
+.. note::
+    This takes a while (5 minutes), as the web server needs a while to process all of the files and translations. Please be patient.
+
 The third and final step is "start sylloge of codes OF". This starts the graphical projection.
 
 Shutdown
