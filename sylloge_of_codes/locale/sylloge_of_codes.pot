@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sylloge_of_codes 1.0\n"
 "Report-Msgid-Bugs-To: nknouf@zeitkunst.org\n"
-"POT-Creation-Date: 2014-07-24 12:44-04:00\n"
+"POT-Creation-Date: 2014-07-25 11:41-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,72 +18,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 
-#: ./sylloge_of_codes/views.py:194
+#: ./sylloge_of_codes/views.py:209
 #, c-format
 msgid "You have been logged out."
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:207
+#: ./sylloge_of_codes/views.py:222
 #, c-format
 msgid "System will shutdown now."
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:218
+#: ./sylloge_of_codes/views.py:233
 #, c-format
 msgid "Sylloge of Codes Admin"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:90
+#: ./sylloge_of_codes/views.py:105
 #, c-format
 msgid "Code was submitted successfully."
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:159
+#: ./sylloge_of_codes/views.py:174
 #, c-format
 msgid "You are already logged in."
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:181
+#: ./sylloge_of_codes/views.py:196
 #, c-format
 msgid "Failed login"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:188
+#: ./sylloge_of_codes/views.py:203
 #, c-format
 msgid "Sylloge of Codes Login"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:242
+#: ./sylloge_of_codes/views.py:257
 #, c-format
 msgid "Codes updated."
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:276
+#: ./sylloge_of_codes/views.py:291
 #, c-format
 msgid "Sylloge of Codes Curate"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:59 ./sylloge_of_codes/templates/curate.pt:58
+#: ./sylloge_of_codes/views.py:73 ./sylloge_of_codes/templates/curate.pt:58
 #, c-format
 msgid "Code"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:59
+#: ./sylloge_of_codes/views.py:73
 #, c-format
 msgid "Error: you must enter a code"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:60
+#: ./sylloge_of_codes/views.py:74
 #, c-format
 msgid "Pseudonym"
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:178
+#: ./sylloge_of_codes/views.py:193
 #, c-format
 msgid "You are now logged in."
 msgstr ""
 
-#: ./sylloge_of_codes/views.py:63 ./sylloge_of_codes/templates/curate.pt:92
+#: ./sylloge_of_codes/views.py:78 ./sylloge_of_codes/templates/curate.pt:92
 #: ./sylloge_of_codes/templates/login.pt:68
 #, c-format
 msgid "Submit"
@@ -212,43 +212,87 @@ msgstr ""
 msgid "Posted by ${code.pseudonym} on ${code.code_date}"
 msgstr ""
 
-#. Default: This is a time when electronic communications are surveilled the
-#. world over. Little seems to escape the computer programs and human analysts
-#. that pour over our electronic data as it traverses national boundaries
-#. through undersea cables or the wireless ether. Sent in the clear, our data
-#. is understandable by anyone with a bit of technical knowledge. So we're
-#. asked to encrypt it, to obfuscate it in some way. But these same programs
-#. and analysts have made these encryption techniques weak, opening backdoors
-#. into seemingly secure communications. What we're left feeling is
-#. helplessness, a distinct lack of power to respond, and a dangerous level of
-#. cynicism.
 #: ./sylloge_of_codes/templates/home.pt:30
-msgid "firstP"
+msgid "Hello friends,"
 msgstr ""
 
-#. Default: So if we can't trust that our messages pass from one person to
-#. another without being surveilled, no matter what computational steps we
-#. take, what can we do? We can think more poetically. Computers are rather
-#. silly machines, only able to "understand" the most basic means of
-#. information. They are horrible at dealing with the poetic, with sarcasm,
-#. with hidden messages, pidgin, and nuanced meanings. They cannot handle the
-#. unquantifiable.
 #: ./sylloge_of_codes/templates/home.pt:33
-msgid "secondP"
+msgid "We have a problem."
 msgstr ""
 
-#. Default: This implies that we should be developing new, more poetic forms of
-#. communication that are resistant to analysis by computers. So consider this
-#. an invitation, an invitation to create a sylloge of codes. A sylloge is a
-#. collection, a reference to the dark ages where travellers would record
-#. ancient Roman and Greek inscriptions. We too will create a new sylloge of
-#. alternative forms of communication.
 #: ./sylloge_of_codes/templates/home.pt:36
-msgid "thirdP"
+msgid ""
+"Our electronic communications are constantly surveilled by the NSA or the "
+"GCHQ. Little seems to escape either computer programs or human analysts. Both"
+" pour over our data as it flows under the sea or through the ether. Sent in "
+"the clear, it's \"trivial\" to dig through it, as the hackers like to say. So"
+" we're asked to encrypt it, to obfuscate it in some way. Yet encryption is "
+"not a panacea, for it too can be bypassed in a plethora of ways. We seem to "
+"be stuck in a catch-22, damned if we do, damned if we don't. So we feel a "
+"lack of power, we feel helpless, we feel cynical."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/home.pt:39
+msgid "What can we do?"
+msgstr ""
+
+#: ./sylloge_of_codes/templates/home.pt:42
+msgid ""
+"We can think more poetically. Computers are rather silly machines, only able "
+"to \"understand\" the most basic of information. They can't handle the poetic"
+" nor sarcasm, and deal poorly with hidden messages, pidgin, and nuanced "
+"meanings. They can't handle the unquantifiable. This imples that we should "
+"create more poetic forms of communication that are resistant to computational"
+" analysis."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/home.pt:45
+msgid ""
+"Consider this an invitation. An invitation to create a new sylloge of codes. "
+"A sylloge is a collection of texts. It's a reference to an old tradition "
+"where travellers would record ancient Greek and Roman inscriptions. Today, "
+"let's create a new sylloge, a new collection of codes that others can use."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/home.pt:48
+msgid ""
+"You might wonder what these codes could be. Well, remember Eugenio Dittborn, "
+"who piggy-backed on the postal network in order to transfer his artwork out "
+"of Chile. Or remember that tale of Borges, where an agent kills a man with "
+"the same name as a secret location, in order to transmit this information to "
+"his handlers through a newspaper headline. There's the artist Kate Rich, who "
+"in \"Feral Trade\", allows anyone to request that strangers bring you "
+"foodstuffs from far-off corners of the globe. Perhaps you have a special way "
+"of communicating with a friend or partner. Maybe you had a secret language as"
+" a child. Or you communicate the most amazing insights through a poem. All of"
+" these methods are potential ways to resist the NSA or the GCHQ."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/home.pt:51
+msgid ""
+"But we must be discreet about it. That's why the box in front of you exists. "
+"It's the sylloge itself. It contains a computer with a wireless network that "
+"is private to this space. The codes only will exist within this room."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/home.pt:54
+msgid ""
+"To contribute, connect to the wireless network \"sylloge_of_codes\". Then go "
+"to your web browser and type in \"sylloge.of.codes\". You'll be taken to the "
+"page where you can contribute. You'll be able to take one code--one "
+"contributed by someone else-- with you when you leave. Take it with you, "
+"think about it, pass it on, perhaps use it in your daily life."
+msgstr ""
+
+#: ./sylloge_of_codes/templates/home.pt:57
+msgid ""
+"When the power of any state feels too impenetrable, we can fall into the "
+"depths of cynicism. Instead, let's use our imagination to reinvent how we "
+"communicate."
 msgstr ""
 
 #. Default: submit code
-#: ./sylloge_of_codes/templates/home.pt:39
+#: ./sylloge_of_codes/templates/home.pt:60
 msgid "largeSubmitLink"
 msgstr ""
 
