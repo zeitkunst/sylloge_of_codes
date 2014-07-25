@@ -21,7 +21,7 @@ requires = [
     'sqlalchemy-migrate',
     'textile',
     'deform',
-    'colander',
+    'colander>=1.0b1',
     'ColanderAlchemy',
     'pycrypto',
     'pyramid_beaker',
