@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: sylloge_of_codes 1.0\n"
 "Report-Msgid-Bugs-To: nknouf@zeitkunst.org\n"
 "POT-Creation-Date: 2014-07-25 11:41-04:00\n"
-"PO-Revision-Date: 2014-07-25 11:43-0500\n"
+"PO-Revision-Date: 2014-07-26 12:36-0500\n"
 "Last-Translator: Claudia Pederson <ccp9@cornell.edu>\n"
 "Language-Team: Spanish\n"
 "Language: es_CL\n"
@@ -225,7 +225,7 @@ msgstr "Publicado por ${code.pseudonym} en ${code.code_date}"
 
 #: sylloge_of_codes/templates/home.pt:30
 msgid "Hello friends,"
-msgstr "Hola visitante, "
+msgstr "Estimado visitante, "
 
 #: sylloge_of_codes/templates/home.pt:33
 msgid "We have a problem."
@@ -241,15 +241,7 @@ msgid ""
 "encryption is not a panacea, for it too can be bypassed in a plethora of "
 "ways. We seem to be stuck in a catch-22, damned if we do, damned if we "
 "don't. So we feel a lack of power, we feel helpless, we feel cynical."
-msgstr ""
-"Nuestras comunicaciones electrónicas están constantemente vigilados por la "
-"NSA o el GCHQ. Poco parece escapar a los programas informáticos o analistas "
-"humanos. Ambos examinan nuestros datos a medida que fluyen bajo el mar o por "
-"el éter. Enviada en el claro, es \"trivial\" decifrar information. Así que "
-"los hackers nos piden para cifrarla.Sin embargo, el cifrado no es una "
-"panacea, ya que también se puede decifrar a el cifrado. Parece que estamos "
-"atrapados en un “catch-22,” palos porque bogas, palos porque no bogas. Así "
-"que nos sentimos impotentes, cínicos. "
+msgstr "Nuestras comunicaciones electrónicas están constantemente  vigiladas  por la NSA o el GCHQ.  Poco parece escapar  a los programas informáticos o a los analistas humanos.  Ambos examinan nuestros datos a medida que fluyen  bajo el mar  o por el éter.  Enviada en el claro,  es \"trivial\" decifrar información.  Así que los hackers nos piden para cifrarla. Sin embargo,  el cifrado no es una panacea,  ya  que el cifrado tambien puede ser decifrado .  Parece que estamos atrapados en un “catch-22,”  palos porque bogas,  palos porque no bogas.  Así es que nos sentimos impotentes,  cínicos. "
 
 #: sylloge_of_codes/templates/home.pt:39
 msgid "What can we do?"
@@ -263,13 +255,7 @@ msgid ""
 "nuanced meanings. They can't handle the unquantifiable. This imples that we "
 "should create more poetic forms of communication that are resistant to "
 "computational analysis."
-msgstr ""
-"Podemos pensar más poéticamente. Las computadoras son máquinas tontas,sólo "
-"capaces de \"entender\" la más básica de información. Si embargo no pueden "
-"manejar la poética ni el sarcasmo, y tampoco mensajes ambiguasy lenguas "
-"híbridas.  La computation no “intiende” el incuantificable. Este hecho "
-"sugerí que debemos crear formas de comunicación poéticacapaces de resistir "
-"el análisis computacional. "
+msgstr "Podemos pensar más poéticamente.  Las computadoras son máquinas tontas, sólo capaces de \"entender\"  la información más básica.  Sin embargo no pueden manejar la poética  ni el sarcasmo,  y tampoco mensajes ambiguos  ni lenguas híbridas.   La computation no “intiende”  lo incuantificable.  Este hecho  sugiere que debemos crear  formas de comunicación poética capaces de resistir el análisis computacional.  "
 
 #: sylloge_of_codes/templates/home.pt:45
 msgid ""
@@ -277,12 +263,7 @@ msgid ""
 "A sylloge is a collection of texts. It's a reference to an old tradition "
 "where travellers would record ancient Greek and Roman inscriptions. Today, "
 "let's create a new sylloge, a new collection of codes that others can use."
-msgstr ""
-"Considere esto una invitación. Una invitación a crear un nuevo Sylloge de "
-"códigos. Un Sylloge es una colección de textos.Es una referencia a una "
-"tradición antigua, el la cual viajeros registraven antiguas inscripciones "
-"griegas y romanas. Hoy, pretendemos crear un nuevo Sylloge, una nueva "
-"colección de códigos que otros pueden utilizar. "
+msgstr "Considere esto una invitación.  Una invitación a crear  un nuevo Sylloge de códigos.  Un Sylloge es una colección de textos, una referencia a una tradición antigua,   en  la cual viajeros registraban antiguas inscripciones griegas y romanas.  Hoy,  pretendemos crear un nuevo Sylloge,  una nueva colección de códigos que otros pueden utilizar. "
 
 #: sylloge_of_codes/templates/home.pt:48
 msgid ""
@@ -296,31 +277,14 @@ msgid ""
 "of communicating with a friend or partner. Maybe you had a secret language "
 "as a child. Or you communicate the most amazing insights through a poem. All "
 "of these methods are potential ways to resist the NSA or the GCHQ."
-msgstr ""
-"Como se puede imaginar la creación de estes códigos? Por ejemplo, recuerde "
-"los airmail paintings de Eugenio Dittborn. Este artista aprovecho la red "
-"postal con el fin de transferir sus obras de arte fuera del país durante el "
-"gobierno de Pinochet en Chile. O recorde una historia de Borges, donde un "
-"agente mata a un hombre con el mismo nombre de un lugar secreto con el fin "
-"de transmitir esta información a sus contactos a través de un titulo en el "
-"periódico. O mas recién, el trabajo de la artista Australiana Kate Rich, "
-"\"Feral Trade\", creado para permiter a cualquier persona solicitar la "
-"ahuyda de viajeros con el fin de obtener alimentos desde los rincones "
-"lejanos del planeta. Tal vez usted tiene una manera especial de comunicarse "
-"con una amiga o compañera. Tal vez hablaba un lenguaje secreto cuando era "
-"niña. ¿O utiliza poesia para comunicar sentimientos? Todos estos métodos son "
-"posibles formas de resistir la NSA o el GCHQ. "
+msgstr "Como se puede imaginar la creación de estes códigos?  Por ejemplo;  recuerda uds. Las pinturas aeropostales de Eugenio Dittborn? Este artista aprovecho la red postal  con el fin de transitar sus obras de arte fuera del país  durante el gobierno de Pinochet en Chile.  O recorde una historia de Borges,  donde un agente mata a un hombre con el mismo nombre de un lugar secreto  con el fin de transmitir esta información a sus contactos  a través de un titulo en el periódico.  O mas recientemente podemos observar  el trabajo de la artista Australiana Kate Rich,  \"Feral Trade\",  creado para permiter a cualquier persona solicitar la asistencia de viajeros  con el fin de obtener alimentos desde los rincones mas lejanos del planeta.  Tal vez usted tiene una manera especial de comunicarse  con una amiga o compañera.  Tal vez hablaba un lenguaje secreto cuando era niña.  ¿O utiliza poesia para comunicar  semtimientos?  Todos estos métodos son posibles formas de resistir la NSA o el GCHQ. "
 
 #: sylloge_of_codes/templates/home.pt:51
 msgid ""
 "But we must be discreet about it. That's why the box in front of you exists. "
 "It's the sylloge itself. It contains a computer with a wireless network that "
 "is private to this space. The codes only will exist within this room."
-msgstr ""
-"Pero hay que actuar con precaución. Es por eso que existe la caja en frente "
-"de usted. Esa caja es el propio Sylloge. Contiene una computadora con una "
-"red inalámbrica limitada a este espacio. Los códigos sólo existen dentro de "
-"esta galeria. "
+msgstr "Pero hay que actuar con precaución.  Es por eso que existe la caja  frente de usted.  Esa caja es el propio Sylloge.  Contiene una computadora con una red inalámbrica  limitada a este espacio.  Los códigos sólo existen dentro de esta galeria. "
 
 #: sylloge_of_codes/templates/home.pt:54
 msgid ""
@@ -330,21 +294,14 @@ msgid ""
 "contributed by someone else-- with you when you leave. Take it with you, "
 "think about it, pass it on, perhaps use it in your daily life."
 msgstr ""
-"Para contribuir, conectese a la red \"sylloge_of_codes\" inalámbricos.  Abra "
-"su navegador web y escriba \"sylloge.of.codes\". Sera llevado a la página "
-"donde usted puede contribuir. Podra tambien descargar un código, uno "
-"aportado por otra visitante. Llévelo con usted, pense en ello, compártelo, "
-"quizás puede usarlo en su vida diaria. "
+"Para contribuir, conectese a la red \"sylloge_of_codes\" inalámbricos.   Abra su navegador web y escriba \"sylloge.of.codes\".  Sera llevado a la página donde usted puede contribuir.  Podra tambien descargar un código,  uno aportado por otra visitante.  Llévelo con usted,  piense en el,  compártalo,  quizás pueda usarlo en su vida diaria. "
 
 #: sylloge_of_codes/templates/home.pt:57
 msgid ""
 "When the power of any state feels too impenetrable, we can fall into the "
 "depths of cynicism. Instead, let's use our imagination to reinvent how we "
 "communicate."
-msgstr ""
-"Cuando el poder nos parece impenetrable, corremos el riesgo de alimentar el "
-"cinismo. En lugar de ello, proponemos usar nuestra imaginación para "
-"reinventar la forma en que nos comunicamos. "
+msgstr "Cuando el poder nos parece impenetrable,  corremos el riesgo de alimentar el cinismo.  En lugar de ello,  proponemos usar nuestra imaginación  para reinventar la forma en que nos comunicamos. "
 
 #. Default: submit code
 #: sylloge_of_codes/templates/home.pt:60
