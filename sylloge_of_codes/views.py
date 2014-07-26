@@ -134,6 +134,8 @@ def print_page(request):
     session = DBSession()
     #rand = random.randrange(0, session.query(Sylloge).filter(Sylloge.enabled == 1).filter(Sylloge.pdf_processed == 1).count())
     ids = session.query(Sylloge.id).filter(Sylloge.enabled == 1).filter(Sylloge.pdf_processed == 1).all()
+    # TODO
+    # Take care of error when nothing is available: nothing enabled, and nothing processed
     chosenID = random.sample(ids, 1)
     row = session.query(Sylloge.pdf_path).filter(Sylloge.id == chosenID[0][0]).one()
 
