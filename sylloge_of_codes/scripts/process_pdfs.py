@@ -28,17 +28,17 @@ xelatexDocument = r"""\documentclass[17pt,extrafontsizes,oneside]{memoir}
 
 \begin{document}
 \pagestyle{empty}
-\centerline{\textbf{\Huge\sffamily sylloge of codes}}
+\centerline{\textbf{\Huge\sffamily sylloge de códigos}}
 
-Contributed by \textit{%s} on %s.
+\textit{%s}, %s.
 
 %s
 
-For more information about this project, please visit \url{http://sylloge-of-codes.net}.
+\url{http://sylloge-of-codes.net}.
 
 \hrulefill
 
-\textcopyright 2014, Nicholas Knouf and the respective contributors. All content is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (\url{http://creativecommons.org/licenses/by-nc/4.0/}).
+\textcopyright 2014, Nicholas Knouf y los respectivos contribuyentes. Todo el contenido es bajo una licencia Creative Commons Attribution-NonCommercial 4.0 International License (\url{http://creativecommons.org/licenses/by-nc/4.0/}).
 \end{document}"""
 
 def usage(argv):
