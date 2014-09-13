@@ -195,6 +195,14 @@ body {
     text-align: center;
 }
 
+.content h3 {
+    font-weight: bold;
+    font-size: 24pt;
+    font-family: "SourceSansPro", sans-serif;
+    text-align: center;
+}
+
+
 footer {
     margin-left: 1em;
     margin-right: 1em;
@@ -219,3 +227,8 @@ footer {
 div.tab-content {
     margin-bottom: 1.0em;
 }
+
+.slick-prev:before, .slick-next:before { 
+        color:red !important;
+}
+
