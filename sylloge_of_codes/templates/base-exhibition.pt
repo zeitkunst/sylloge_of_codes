@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="${request.locale_name}"
+    lang="${request.locale_name}"
+    xmlns:tal="http://xml.zope.org/namespaces/tal" 
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n" 
+    i18n:domain="sylloge_of_codes" 
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    tal:define="testing False; css_static_url request.static_url('sylloge_of_codes:static/css'); scripts_static_url request.static_url('sylloge_of_codes:static/js'); logged_in request.logged_in">
+
+<head>
+    <meta charset="utf-8"/>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="${request.static_url('sylloge_of_codes:static/pyramid-16x16.png')}"/>
+
+    <title>${title}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="${request.static_url('sylloge_of_codes:static/css/form.css')}" rel="stylesheet" media="screen,print"/>
+    <link href="${request.static_url('sylloge_of_codes:static/css/bootstrap.min.css')}" rel="stylesheet" media="screen,print"/>
+    <!-- Custom styles for this template -->
+    <!--<link href="${request.static_url('sylloge_of_codes:static/css/jumbotron.css')}" rel="stylesheet" media="screen"/>-->
+    <link href="${request.static_url('sylloge_of_codes:static/css/sylloge-of-codes.css')}" rel="stylesheet" media="screen"/>
+   
+    <!-- Print stylesheet --> 
+    <link href="${request.static_url('sylloge_of_codes:static/css/print.css')}" rel="stylesheet" media="print"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="${request.static_url('sylloge_of_codes:static/js/html5shiv.js')}"></script>
+      <script src="${request.static_url('sylloge_of_codes:static/js/respond.min.js')}"></script>
+    <![endif]-->
+</head>
+
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">sylloge of codes</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <a class="navbar-brand" href="/submit" i18n:translate="submitMenu">submit</a>
+            <a class="navbar-brand" href="/about" i18n:translate="aboutMenu">about</a>
+            <a class="navbar-brand" href="/credits" i18n:translate="creditsMenu">credits</a>
+            <!--
+            <form class="navbar-form navbar-right" role="form">
+                <div class="form-group">
+                  <input type="text" placeholder="Email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <input type="password" placeholder="Password" class="form-control"/>
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+            -->
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <tal:block metal:define-slot="content">
+    </tal:block>
+
+      
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <!-- FOOTER -->  
+                    <hr/>
+                    <footer>
+                        <p>&copy; 2014, <span i18n:translate="footerCopyright">Nicholas Knouf and the respective contributors. All content is licensed under a </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>. <a href="/admin" i18n:translate="">Admin</a>.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <div>
+    <script src="${request.static_url('sylloge_of_codes:static/js/jquery.min.js')}"></script>
+    <script src="${request.static_url('sylloge_of_codes:static/js/bootstrap.min.js')}"></script>
+    <script src="${request.static_url('sylloge_of_codes:static/js/deform.js')}"></script>
+    <!--<script src="${request.static_url('sylloge_of_codes:static/js/deform_bootstrap.js')}"></script>-->
+    <script type="text/javascript">
+        deform.load()
+        $("#flash_messages").addClass("in");
+    </script>
+    </div>
+  </body>
+</html>
