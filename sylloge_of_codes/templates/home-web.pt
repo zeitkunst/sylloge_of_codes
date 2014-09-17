@@ -71,6 +71,28 @@
                 </div>
                 <div class="row">
                     <div class="col-md-offset-2 col-md-8">
+                        <h2>Davis Museum, Wellesley College</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="sylloge-images">
+                            <div class="sylloge-image"><img src="${request.static_url('sylloge_of_codes:static/images/sylloge_of_codes_20140916_MG_7522.jpg')}" alt=""/></div>
+                            <div class="sylloge-image"><img src="${request.static_url('sylloge_of_codes:static/images/sylloge_of_codes_20140914_MG_7406.jpg')}" alt=""/></div>
+                            <div class="sylloge-image"><img src="${request.static_url('sylloge_of_codes:static/images/sylloge_of_codes_20140914_MG_7416.jpg')}" alt=""/></div>
+                            <div class="sylloge-image"><img src="${request.static_url('sylloge_of_codes:static/images/sylloge_of_codes_20140917MVI_7532_still001.jpg')}" alt=""/></div>
+                            <div class="sylloge-image"><img src="${request.static_url('sylloge_of_codes:static/images/sylloge_of_codes_20140914_MG_7419.jpg')}" alt=""/></div>
+                        </div>
+                    </div>        
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
+                        <h2>Galería Macchina, Escuela de Arte de la Universidad Católica, Santiago, Chile</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-8">
                         <div class="sylloge-images">
                             <div class="sylloge-image"><img src="${request.static_url('sylloge_of_codes:static/images/Galeria_Machina_10645225_310747135773308_950300471144890929_n.jpg')}" alt=""/></div>
                             <div class="sylloge-image"><img src="${request.static_url('sylloge_of_codes:static/images/Galeria_Machina_10616299_310747869106568_2874737725987032419_n.jpg')}" alt=""/></div>
@@ -78,6 +100,7 @@
                         </div>
                     </div>        
                 </div>
+
             </section>    
 
             <!-- hr -->
